@@ -25,12 +25,14 @@ while True:
 
     socket.sendto(message.encode('utf-8'), (HOST, PORT))
 
-    next_opeation = input("Deseja realizar outra operação? (s/n): ")
-
-    # Get result from server
+     # Get result from server
     data, addr = socket.recvfrom(5000)
     result = data.decode('utf-8')
-    print("Endereço e mensagem recebida do servidor: {} --> {}".format(addr, message))
+    print("Endereço e mensagem recebida do servidor: {} --> {}".format(addr, result))
+
+    next_opeation = input("Deseja realizar outra operação? (s/n): ")
+
+   
 
 
     # Check if user wants to continue
