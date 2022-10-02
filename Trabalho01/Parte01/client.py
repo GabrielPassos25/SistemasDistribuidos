@@ -5,6 +5,7 @@ PORT = 5000 # The port used by the server
 
 socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
+
 print("Cliente iniciado na porta " + str(PORT))
 
 # Data format: "first_operator operation second_operator"
@@ -28,7 +29,7 @@ while True:
      # Get result from server
     data, addr = socket.recvfrom(5000)
     result = data.decode('utf-8')
-    print("Endereço e mensagem recebida do servidor: {} --> {}".format(addr, result))
+    print("Endereço e resultado recebido do servidor: {} --> {}".format(addr, result))
 
     next_opeation = input("Deseja realizar outra operação? (s/n): ")
 
