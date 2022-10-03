@@ -30,6 +30,6 @@ class Object():
         try:
             for key in body.keys():
                 objects[id][key] = body[key]
-                return {"status": 200, "mensagem": "Objeto atualizado com sucesso!"}
+            return {"status": 200, "mensagem": "Objeto atualizado com sucesso!"}
         except IndexError:
             return {"status": 404, "mensagem": "Objeto não encontrado!"}
