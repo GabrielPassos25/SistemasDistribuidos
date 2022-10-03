@@ -1,0 +1,18 @@
+// Definition for requests formats
+
+base_format = {
+  "op_type": "SEND_MSG || USERNAME || LIST_USERS || EXIT",
+  "body": {}
+}
+
+USERNAME_request_body_format = {
+  "username": "<string>"
+}
+
+SEND_MSG_request_body_format = {
+  "message": "<string>"
+}
+
+LIST_USERS_request_body_format = {}
+
+EXIT_request_body_format = {}

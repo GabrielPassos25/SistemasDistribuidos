@@ -1,0 +1,25 @@
+// Definition for server message formats
+
+base_format = {
+  "op_type": "USR_JOIN || RECV_MSG || USERS_LIST || USR_EXIT",
+  "body": {}
+}
+
+USR_JOIN_message_body_format = {
+  "username": "<string>"
+}
+
+RECV_MSG_message_body_format = {
+  "sender_username": "<string>",
+  "message": "<string>"
+}
+
+USERS_LIST_message_body_format = {
+  "users": [
+    "<string>"
+  ]
+}
+
+USR_EXIT_message_body_format = {
+  "username": "<string>"
+}
