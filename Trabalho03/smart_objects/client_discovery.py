@@ -1,6 +1,6 @@
 import socket
 
-MULTICAST_GROUP_ADDRESS = 'localhost'
+MULTICAST_GROUP_ADDRESS = '224.0.0.1'
 MULTICAST_PORT = 5000
 
 def create_gateway_discovery_socket():
