@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+message SmartObjectsList {
+  repeated SmartObjectDetails objects = 1;
+}
+
+message SmartObjectDetails {
+  bool status = 1;
+  string ip = 2;
+  int32 port = 3;
+  string id = 8;
+
+  // The details for the smart object can be one of these (only one); These are the currently supported objects
+  oneof object_details {
+    LightDetails light = 4;
+    TvDetails tv = 5;
+    AirConditionerDetails ac = 6;
+    TemperatureSensorDetails temp_sensor = 7;
+  }
+}
+
+message LightDetails {
+  string name = 1;
+  string color = 2;
+}
+
+message TvDetails {
+  string channel = 1;
+  int32 volume = 2;
+}
+
+enum AirConditionerMode {
+  FAN_MODE = 0;
+  SILENT_MODE = 1;
+  EXTREME_CHILL = 2;
+}
+
+message AirConditionerDetails {
+  int32 temperature = 1;
+  AirConditionerMode mode = 2;
+}
+
+message TemperatureSensorDetails {
+  int32 temperature = 1;
+}
