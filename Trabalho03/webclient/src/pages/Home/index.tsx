@@ -6,6 +6,8 @@
 import { useEffect, useState } from 'react';
 import { Table } from '../../components/Table';
 import api from '../../services/api';
+import {ISmartObjectDetails, SmartObjectDetails, SmartObjectsList} from "../../messages/compiled";
+// import ISmartObjectsList from '../../messages/compiled'
 
 // Styles
 import { Container, Title, Subtitle } from './styles';
@@ -35,21 +37,25 @@ export default function Home() {
     }
 
     function getData() {
-        api.get('/objects').then(response => {
+        api.get('/objects', {responseType: 'arraybuffer', responseEncoding: "binary"}).then(response => {
+            const objects = SmartObjectsList.decode(new Uint8Array(response.data))
             const lightsData: any[][] = []
             const tvsData: any[][] = []
             const airConditionersData: any[][] = []
             const temperatureSensorsData: any[][] = []
-            response.data.forEach((device: any) => {
-                switch (device.type) {
+            objects.objects.forEach((device: any) => {
+                const whichDevice = device.objectDetails
+                const chosenDevice = device[whichDevice]
+
+                switch (whichDevice) {
                     case "light":
-                        return (lightsData.push([device.name, device.color, handleStatus(device.status), device.ip, device.port]))
+                        return (lightsData.push([chosenDevice.name, chosenDevice.color, handleStatus(chosenDevice.status), device.ip, device.port]))
                     case "tv":
-                        return (tvsData.push([handleStatus(device.status), device.channel, device.volume, device.ip, device.port]))
-                    case "airConditioner":
-                        return (airConditionersData.push([handleStatus(device.status), device.temperature, device.mode, device.ip, device.port]))
-                    case "temperatureSensor":
-                        return (temperatureSensorsData.push([handleStatus(device.status), device.temperature, device.ip, device.port]))
+                        return (tvsData.push([handleStatus(chosenDevice.status), chosenDevice.channel, chosenDevice.volume, device.ip, device.port]))
+                    case "ac":
+                        return (airConditionersData.push([handleStatus(chosenDevice.status), chosenDevice.temperature, chosenDevice.mode, device.ip, device.port]))
+                    case "tempSensor":
+                        return (temperatureSensorsData.push([handleStatus(chosenDevice.status), chosenDevice.temperature, device.ip, device.port]))
                 }
 
             })
