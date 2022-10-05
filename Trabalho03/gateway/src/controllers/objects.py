@@ -7,6 +7,7 @@ app = server.app
 
 objects = []
 
+
 class Object():
     @app.route('/objects', methods=['GET'])
     def get():
@@ -20,7 +21,7 @@ class Object():
         objects.append(object_details)
         return None, 201
 
-    @app.route('/objects/<str:id>', methods=['GET'])
+    @app.route('/objects/<string:id>', methods=['GET'])
     def get_by_id(id):
         try:
             object = next(filter(lambda e: e.id == id, objects))
