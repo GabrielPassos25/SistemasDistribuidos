@@ -1,12 +1,18 @@
 from flask import Flask
 from flask_cors import CORS, cross_origin
 import socket
+import platform
 
 from src.server.GatewayLookup_pb2 import GatewayLookupRequest
 
 MULTICAST_GROUP_ADDRESS = '224.1.1.1'
+MULTICAST_GROUP_ADDRESS_WINDOWS = '127.0.0.1'
 MULTICAST_PORT = 5000
-MULTICAST_ADDRESS = (MULTICAST_GROUP_ADDRESS, MULTICAST_PORT)
+
+if platform.system() == 'Windows':
+    MULTICAST_ADDRESS = (MULTICAST_GROUP_ADDRESS_WINDOWS, MULTICAST_PORT)
+else:
+    MULTICAST_ADDRESS = (MULTICAST_GROUP_ADDRESS, MULTICAST_PORT)
 
 class Server():
     def __init__(self, ):
