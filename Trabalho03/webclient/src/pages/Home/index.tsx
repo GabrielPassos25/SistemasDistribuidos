@@ -47,19 +47,18 @@ export default function Home() {
             const airConditionersData: any[][] = []
             const temperatureSensorsData: any[][] = []
             objects.objects.forEach((device: any) => {
-                console.log(device)
                 const whichDevice = device.objectDetails
                 const chosenDevice = device[whichDevice]
 
                 switch (whichDevice) {
                     case "light":
-                        return (lightsData.push([chosenDevice.id, chosenDevice.name, chosenDevice.color, device.ip, device.port, handleStatus(chosenDevice.status)]))
+                        return (lightsData.push([device.id, chosenDevice.name, chosenDevice.color, device.ip, device.port, handleStatus(chosenDevice.status)]))
                     case "tv":
-                        return (tvsData.push([chosenDevice.id, chosenDevice.channel, chosenDevice.volume, device.ip, device.port, handleStatus(chosenDevice.status)]))
+                        return (tvsData.push([device.id, chosenDevice.channel, chosenDevice.volume, device.ip, device.port, handleStatus(chosenDevice.status)]))
                     case "ac":
-                        return (airConditionersData.push([chosenDevice.id, chosenDevice.temperature, chosenDevice.mode, device.ip, device.port, handleStatus(chosenDevice.status)]))
+                        return (airConditionersData.push([device.id, chosenDevice.temperature, chosenDevice.mode, device.ip, device.port, handleStatus(chosenDevice.status)]))
                     case "tempSensor":
-                        return (temperatureSensorsData.push([chosenDevice.id, chosenDevice.temperature, device.ip, device.port, handleStatus(chosenDevice.status)]))
+                        return (temperatureSensorsData.push([device.id, chosenDevice.temperature, device.ip, device.port, handleStatus(chosenDevice.status)]))
                 }
 
             })
