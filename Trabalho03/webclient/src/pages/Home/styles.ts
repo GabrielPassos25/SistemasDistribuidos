@@ -14,3 +14,10 @@ export const Subtitle = styled.h2`
     margin-top: 40px;
     color: var(--neutral-color-high-main);
 `;
+
+export const StatusContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
+
+export const Status = styled.p``;

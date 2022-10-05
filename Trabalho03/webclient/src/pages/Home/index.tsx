@@ -6,11 +6,12 @@
 import { useEffect, useState } from 'react';
 import { Table } from '../../components/Table';
 import api from '../../services/api';
-import {ISmartObjectDetails, SmartObjectDetails, SmartObjectsList} from "../../messages/compiled";
+import { ISmartObjectDetails, SmartObjectDetails, SmartObjectsList } from "../../messages/compiled";
+import Switch from "react-switch";
 // import ISmartObjectsList from '../../messages/compiled'
 
 // Styles
-import { Container, Title, Subtitle } from './styles';
+import { Container, Title, Subtitle, StatusContainer, Status } from './styles';
 
 // Renderer
 export default function Home() {
@@ -21,41 +22,44 @@ export default function Home() {
     const [refresh, setRefresh] = useState<boolean>(false);
 
     const headers = [
-        ["Name", "Color", "Status", "IP", "Port"],
-        ["Status", "Channel", "Volume", "IP", "Port"],
-        ["Status", "Temperature", "Mode", "IP", "Port"],
-        ["Status", "Temperature", "IP", "Port"],
+        ["ID", "Name", "Color", "IP", "Port", "Status"],
+        ["ID", "Channel", "Volume", "IP", "Port", "Status"],
+        ["ID", "Temperature", "Mode", "IP", "Port", "Status"],
+        ["ID", "Temperature", "IP", "Port", "Status"],
     ]
 
     const devices = ["Lights", "TV's", "Air Conditioning", "Temperature Sensor"]
 
     function handleStatus(status: number) {
-        if (status === 0) {
-            return "Off";
-        }
-        return "On";
+        return (
+            <StatusContainer>
+                {/* Criar requisição para o protobuff */}
+                <Switch onChange={() => { }} checked={Boolean(status)} />
+            </StatusContainer>
+        );
     }
 
     function getData() {
-        api.get('/objects', {responseType: 'arraybuffer', responseEncoding: "binary"}).then(response => {
+        api.get('/objects', { responseType: 'arraybuffer', responseEncoding: "binary" }).then(response => {
             const objects = SmartObjectsList.decode(new Uint8Array(response.data))
             const lightsData: any[][] = []
             const tvsData: any[][] = []
             const airConditionersData: any[][] = []
             const temperatureSensorsData: any[][] = []
             objects.objects.forEach((device: any) => {
+                console.log(device)
                 const whichDevice = device.objectDetails
                 const chosenDevice = device[whichDevice]
 
                 switch (whichDevice) {
                     case "light":
-                        return (lightsData.push([chosenDevice.name, chosenDevice.color, handleStatus(chosenDevice.status), device.ip, device.port]))
+                        return (lightsData.push([chosenDevice.id, chosenDevice.name, chosenDevice.color, device.ip, device.port, handleStatus(chosenDevice.status)]))
                     case "tv":
-                        return (tvsData.push([handleStatus(chosenDevice.status), chosenDevice.channel, chosenDevice.volume, device.ip, device.port]))
+                        return (tvsData.push([chosenDevice.id, chosenDevice.channel, chosenDevice.volume, device.ip, device.port, handleStatus(chosenDevice.status)]))
                     case "ac":
-                        return (airConditionersData.push([handleStatus(chosenDevice.status), chosenDevice.temperature, chosenDevice.mode, device.ip, device.port]))
+                        return (airConditionersData.push([chosenDevice.id, chosenDevice.temperature, chosenDevice.mode, device.ip, device.port, handleStatus(chosenDevice.status)]))
                     case "tempSensor":
-                        return (temperatureSensorsData.push([handleStatus(chosenDevice.status), chosenDevice.temperature, device.ip, device.port]))
+                        return (temperatureSensorsData.push([chosenDevice.id, chosenDevice.temperature, device.ip, device.port, handleStatus(chosenDevice.status)]))
                 }
 
             })
