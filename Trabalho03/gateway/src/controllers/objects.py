@@ -19,7 +19,7 @@ class Object():
         object_details = SmartObjectDetails()
         object_details.ParseFromString(request.data)
         objects.append(object_details)
-        return None, 201
+        return "", 201
 
     @app.route('/objects/<string:id>', methods=['GET'])
     def get_by_id(id):
@@ -29,12 +29,12 @@ class Object():
         except StopIteration:
             return {"status": 404, "mensagem": "Objeto não encontrado!"}, 404
 
-    @app.route('/objects/<int:id>', methods=['PUT'])
+    @app.route('/objects/<string:id>', methods=['PUT'])
     def put(id):
-        body = request.get_json()
-        try:
-            for key in body.keys():
-                objects[id][key] = body[key]
-            return {"status": 200, "mensagem": "Objeto atualizado com sucesso!"}, 200
-        except IndexError:
-            return {"status": 404, "mensagem": "Objeto não encontrado!"}, 404
+        object_details = SmartObjectDetails()
+        object_details.ParseFromString(request.data)
+        object = next(filter(lambda e: e.id == object_details.id, objects))
+        for i in range(len(objects)):
+            if objects[i].id == object.id:
+                objects[i] = object_details
+                return {"status": 200, "mensagem": "Objeto atualizado com sucesso!"}, 200

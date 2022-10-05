@@ -30,11 +30,23 @@ export default function Home() {
 
     const devices = ["Lights", "TV's", "Air Conditioning", "Temperature Sensor"]
 
-    function handleStatus(status: number) {
+    function changeStatus(device: any) {
+        const message = SmartObjectDetails.create({ ...device, status: !device.status });
+        const encodedMessage = SmartObjectDetails.encode(message).finish();
+        api.put(`/objects/${device.id}`, encodedMessage, {
+            headers: {
+                'content-type': 'application/x-protobuf'
+            }
+        }).then(() => {
+            setRefresh(!refresh);
+        })
+    }
+
+    function handleStatus(device: any) {
         return (
             <StatusContainer>
                 {/* Criar requisição para o protobuff */}
-                <Switch onChange={() => { }} checked={Boolean(status)} />
+                <Switch onChange={() => changeStatus(device)} checked={Boolean(device.status)} />
             </StatusContainer>
         );
     }
@@ -49,16 +61,15 @@ export default function Home() {
             objects.objects.forEach((device: any) => {
                 const whichDevice = device.objectDetails
                 const chosenDevice = device[whichDevice]
-
                 switch (whichDevice) {
                     case "light":
-                        return (lightsData.push([device.id, chosenDevice.name, chosenDevice.color, device.ip, device.port, handleStatus(chosenDevice.status)]))
+                        return (lightsData.push([device.id, chosenDevice.name, chosenDevice.color, device.ip, device.port, handleStatus(device)]))
                     case "tv":
-                        return (tvsData.push([device.id, chosenDevice.channel, chosenDevice.volume, device.ip, device.port, handleStatus(chosenDevice.status)]))
+                        return (tvsData.push([device.id, chosenDevice.channel, chosenDevice.volume, device.ip, device.port, handleStatus(device)]))
                     case "ac":
-                        return (airConditionersData.push([device.id, chosenDevice.temperature, chosenDevice.mode, device.ip, device.port, handleStatus(chosenDevice.status)]))
+                        return (airConditionersData.push([device.id, chosenDevice.temperature, chosenDevice.mode, device.ip, device.port, handleStatus(device)]))
                     case "tempSensor":
-                        return (temperatureSensorsData.push([device.id, chosenDevice.temperature, device.ip, device.port, handleStatus(chosenDevice.status)]))
+                        return (temperatureSensorsData.push([device.id, chosenDevice.temperature, device.ip, device.port, handleStatus(device)]))
                 }
 
             })
