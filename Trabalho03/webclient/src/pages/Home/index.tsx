@@ -33,7 +33,7 @@ export default function Home() {
     function changeStatus(device: any) {
         const message = SmartObjectDetails.create({ ...device, status: !device.status });
         const encodedMessage = SmartObjectDetails.encode(message).finish();
-        api.put(`/objects/${device.id}`, encodedMessage, {
+        api.put(`/objects/${device.id}`, encodedMessage.slice(0, encodedMessage.length), {
             headers: {
                 'content-type': 'application/x-protobuf'
             }
@@ -45,7 +45,6 @@ export default function Home() {
     function handleStatus(device: any) {
         return (
             <StatusContainer>
-                {/* Criar requisição para o protobuff */}
                 <Switch onChange={() => changeStatus(device)} checked={Boolean(device.status)} />
             </StatusContainer>
         );
