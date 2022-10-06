@@ -14,8 +14,8 @@ def create_gateway_discovery_socket():
     else:
         sock.bind((MULTICAST_GROUP_ADDRESS, MULTICAST_PORT))
         
-    mreq = struct.pack("4sl", socket.inet_aton(MULTICAST_GROUP_ADDRESS), socket.INADDR_ANY)
+        mreq = struct.pack("4sl", socket.inet_aton(MULTICAST_GROUP_ADDRESS), socket.INADDR_ANY)
 
-    # sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
+        sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
     return sock
 
