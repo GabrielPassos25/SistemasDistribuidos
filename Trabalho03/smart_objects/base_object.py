@@ -5,7 +5,7 @@ import requests
 import uuid
 import time
 
-from SmartObjectDetails_pb2 import SmartObjectDetails, TemperatureSensorDetails
+from SmartObjectDetails_pb2 import SmartObjectDetails
 from FindGatewayRequest_pb2 import FindGatewayRequest
 from FindGatewayResponse_pb2 import FindGatewayResponse
 
@@ -49,7 +49,6 @@ class BaseObject:
             Thread(target=self.handle_gateway_command, args=[client_socket]).start()
 
     def to_proto(self):
-        print("Aqui na classe pai")
         return SmartObjectDetails()
 
     def update_internal_state(self, object_details):
@@ -91,5 +90,3 @@ class BaseObject:
     #         except Exception as e:
     #             print(e)
     #             print("Erro inesperado ao receber requisições de descoberta do gateway")
-
-BaseObject()
