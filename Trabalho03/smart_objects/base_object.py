@@ -11,68 +11,69 @@ from FindGatewayResponse_pb2 import FindGatewayResponse
 
 REFRESH_INTERVAL = 10
 
-class SensorClient():
+
+class BaseObject:
     def __init__(self):
         print("Objeto iniciado...")
-        self.__group_socket = get_objects_group_socket()
-        self.__udp_socket = get_udp_socket()
-        self.__command_socket = socket(AF_INET, SOCK_STREAM)
+        self.group_socket = get_objects_group_socket()
+        self.udp_socket = get_udp_socket()
+        self.command_socket = socket(AF_INET, SOCK_STREAM)
 
         # SO will assign a random free port to the socket
-        self.__command_socket.bind(('', 0))
+        self.command_socket.bind(('', 0))
+        self.ip, self.port = self.command_socket.getsockname()
+        self.id = str(uuid.uuid4())
+        self.status = True
 
-        print(f"Endereço do objeto: ({self.__ip}:{self.__port})")
+        print(f"Endereço do objeto: ({self.ip}:{self.port})")
         print("Solicitando localização do gateway...")
         request = FindGatewayRequest()
-        send_to_gateway_group(self.__udp_socket, request.SerializeToString())
+        send_to_gateway_group(self.udp_socket, request.SerializeToString())
 
         print("Aguardando localização do gateway")
         response = FindGatewayResponse()
-        response.ParseFromString(self.__group_socket.recv(BUFFER_SIZE))
+        response.ParseFromString(self.group_socket.recv(BUFFER_SIZE))
 
-        self.__gateway_ip = response.ip
-        self.__gateway_port = response.port
-        self.__gateway_api_url = f"http://{self.__gateway_ip}:{self.__gateway_port}"
+        self.gateway_ip = response.ip
+        self.gateway_port = response.port
+        self.gateway_api_url = f"http://{self.gateway_ip}:{self.gateway_port}"
 
-        self.__register_object_in_gateway()
+        self.register_object_in_gateway()
 
-        Thread(target=self.__upload_gateway_loop, name="Upload gateway loop").start()
+        Thread(target=self.upload_gateway_loop, name="Upload gateway loop").start()
 
         # Start listening for commands
-        self.__command_socket.listen(100)
+        self.command_socket.listen(100)
         while True:
-            client_socket, _ = self.__command_socket.accept()
-            Thread(target=self.__handle_gateway_command, args=[client_socket]).start()
+            client_socket, _ = self.command_socket.accept()
+            Thread(target=self.handle_gateway_command, args=[client_socket]).start()
 
-    def __to_proto(self):
+    def to_proto(self):
+        print("Aqui na classe pai")
+        return SmartObjectDetails()
+
+    def update_internal_state(self, object_details):
         pass
 
-    def __update_internal_state(self, object_details):
-        pass
-
-    def __handle_gateway_command(self, client_socket):
+    def handle_gateway_command(self, client_socket):
         print("Atualizando estado interno devido a comando externo")
         object_details = SmartObjectDetails()
         object_details.ParseFromString(client_socket.recv(BUFFER_SIZE))
         client_socket.close()
 
-        self.__update_internal_state(object_details)
+        self.update_internal_state(object_details)
 
-    def __upload_gateway_loop(self):
+    def upload_gateway_loop(self):
         while True:
             # envia mensagem para gateway garantindo que estado esteja atualizado com o do objeto local
-            sensor = TemperatureSensorDetails(temperature = self.__temperature)
-            response = SmartObjectDetails(status=True, ip=self.__ip, port=self.__port, temp_sensor=sensor,
-                                          id=self.__id)
-            r = requests.put(f"{self.__gateway_api_url}/objects/refresh/{self.__id}", data=response.SerializeToString())
+            r = requests.put(f"{self.gateway_api_url}/objects/refresh/{self.id}",
+                             data=self.to_proto().SerializeToString())
             print(r)
             time.sleep(REFRESH_INTERVAL)
 
-    def __register_object_in_gateway(self):
-        sensor = TemperatureSensorDetails(temperature = self.__temperature)
-        response = SmartObjectDetails(status=True, ip=self.__ip, port=self.__port, temp_sensor=sensor,
-                                      id=self.__id)
-        r = requests.post(f"{self.__gateway_api_url}/objects", data=self.__to_proto().SerializeToString())
+    def register_object_in_gateway(self):
+        print(self.to_proto())
+        r = requests.post(f"{self.gateway_api_url}/objects", data=self.to_proto().SerializeToString())
         print(r)
 
 
@@ -81,14 +82,14 @@ class SensorClient():
     #     while True:
     #         try:
     #             request = GatewayLookupRequest()
-    #             request.ParseFromString(self.__group_socket.recv(BUFFER_SIZE))
-    #             sensor = TemperatureSensorDetails(temperature = self.__temperature)
-    #             response = SmartObjectDetails(status=True, ip=self.__ip, port=self.__port, temp_sensor=sensor,
-    #                                           id=self.__id)
+    #             request.ParseFromString(self.group_socket.recv(BUFFER_SIZE))
+    #             sensor = TemperatureSensorDetails(temperature = self.temperature)
+    #             response = SmartObjectDetails(status=True, ip=self.ip, port=self.port, temp_sensor=sensor,
+    #                                           id=self.id)
     #             r = requests.post(f"{gateway_api_url}/objects", data=response.SerializeToString())
     #             print(r)
     #         except Exception as e:
     #             print(e)
     #             print("Erro inesperado ao receber requisições de descoberta do gateway")
 
-SensorClient()
+BaseObject()
