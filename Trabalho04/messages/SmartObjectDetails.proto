@@ -21,9 +21,11 @@ message SmartObjectDetails {
   // The details for the smart object can be one of these (only one); These are the currently supported objects
   oneof object_details {
     LightDetails light = 4;
-    TvDetails tv = 5;
+    LuminositySensor luminosity_sensor = 5;
     AirConditionerDetails ac = 6;
     TemperatureSensorDetails temp_sensor = 7;
+    SmokeSensor smoke_sensor = 10;
+    Sprinkler sprinkler = 9;
   }
 }
 
@@ -32,9 +34,18 @@ message LightDetails {
   string color = 2;
 }
 
-message TvDetails {
-  string channel = 1;
-  int32 volume = 2;
+message LuminositySensor {
+  string name = 1;
+  float reading = 2;
+}
+
+message SmokeSensor {
+  string name = 1;
+  float reading = 2;
+}
+
+message Sprinkler {
+  string name = 1;
 }
 
 enum AirConditionerMode {
