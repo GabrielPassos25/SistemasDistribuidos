@@ -9,6 +9,7 @@ from SmartObjectDetails_pb2 import TemperatureSensorDetails, SmartObjectDetails
 class TemperatureSensor(BaseObject):
 
     def __init__(self, initial):
+        self.object_type = "temp_sensor"
         self.temperature = initial
         Thread(target=self.update_temperature).start()
 

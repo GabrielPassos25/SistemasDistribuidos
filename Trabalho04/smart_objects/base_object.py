@@ -13,9 +13,15 @@ from FindGatewayRequest_pb2 import FindGatewayRequest
 from FindGatewayResponse_pb2 import FindGatewayResponse
 import SmartObjectDetails_pb2_grpc
 from object_grpc_server import ObjectGRPCServer
+import pika
 
 REFRESH_INTERVAL = 10
 
+# sensor de temperatura e ar condicionado
+
+# sensor de luminosidade e lampadas inteligentes
+
+# sensor de fumaça e sprinkler
 
 class BaseObject:
     def __init__(self):
@@ -46,7 +52,12 @@ class BaseObject:
 
         self.register_object_in_gateway()
 
-        Thread(target=self.upload_gateway_loop, name="Upload gateway loop").start()
+        self.rabbit_mq_connection = pika.BlockingConnection(
+            pika.ConnectionParameters(host='localhost'))
+        self.rabbit_mq_channel = self.rabbit_mq_connection.channel()
+        self.rabbit_mq_channel.exchange_declare(exchange="global2", exchange_type="direct")
+
+        Thread(target=self.update_gateway_loop, name="Update gateway loop").start()
 
         server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
         SmartObjectDetails_pb2_grpc.add_SmartObjectUpdateServicer_to_server(ObjectGRPCServer(self), server)
@@ -68,12 +79,11 @@ class BaseObject:
 
         self.update_internal_state(object_details)
 
-    def upload_gateway_loop(self):
+    def update_gateway_loop(self):
         while True:
             # envia mensagem para gateway garantindo que estado esteja atualizado com o do objeto local
-            r = requests.put(f"{self.gateway_api_url}/objects/refresh/{self.id}",
-                             data=self.to_proto().SerializeToString())
-            print(r)
+            print("Atualizando gateway...")
+            self.rabbit_mq_channel.basic_publish(exchange="global2", routing_key=self.object_type, body=self.to_proto().SerializeToString())
             time.sleep(REFRESH_INTERVAL)
 
     def register_object_in_gateway(self):

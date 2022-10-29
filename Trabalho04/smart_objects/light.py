@@ -9,6 +9,7 @@ from SmartObjectDetails_pb2 import LightDetails, SmartObjectDetails
 class Light(BaseObject):
 
     def __init__(self, name, color):
+        self.object_type = "light"
         self.name = name
         self.color = color
         super().__init__()

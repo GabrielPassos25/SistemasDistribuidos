@@ -5,6 +5,8 @@ from .SmartObjectDetails_pb2 import SmartObjectDetails, SmartObjectsList
 import SmartObjectDetails_pb2_grpc
 import grpc
 from socket import socket, AF_INET, SOCK_STREAM
+from threading import Thread
+from .update_messages_consumer import UpdateMessagesConsumer
 
 app = server.app
 
@@ -16,6 +18,13 @@ def update_objects_list(object_details):
         if objects[i].id == object.id:
             objects[i] = object_details
             return {"status": 200, "mensagem": "Objeto atualizado com sucesso!"}, 200
+
+
+def init_update_messages_consumer():
+    UpdateMessagesConsumer(update_objects_list)
+
+
+Thread(target=init_update_messages_consumer, name="Update messages consumer").start()
 
 def request_object_state_update(object_detail):
     object_address = f"{object_detail.ip}:{int(object_detail.port)}"
