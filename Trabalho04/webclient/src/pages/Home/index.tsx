@@ -82,19 +82,20 @@ export default function Home() {
             const temperatureSensorsData: any[][] = []
             const smokeSensor: any[][] = []
             const sprinkler: any[][] = []
+            console.log(objects)
             objects.objects.forEach((device: any) => {
                 const whichDevice = device.objectDetails
                 const chosenDevice = device[whichDevice]
                 switch (whichDevice) {
                     case "light":
                         return (lightsData.push([device.id, chosenDevice.name, chosenDevice.color, device.ip, device.port, handleStatus(device)]))
-                    case "luminosity_sensor":
+                    case "luminositySensor":
                         return (luminositySensor.push([device.id, chosenDevice.name, <Input defaultValue={chosenDevice.reading} />, device.ip, device.port, handleStatus(device)]))
                     case "ac":
                         return (airConditionersData.push([device.id, <Input defaultValue={chosenDevice.temperature} />, device.ip, device.port, handleStatus(device), <SaveButton>Salvar</SaveButton>]))
-                    case "temp_sensor":
+                    case "tempSensor":
                         return (temperatureSensorsData.push([device.id, <Input defaultValue={chosenDevice.temperature} />, device.ip, device.port, handleStatus(device)]))
-                    case "smoke_sensor":
+                    case "smokeSensor":
                         return (smokeSensor.push([device.id, chosenDevice.name, <Input defaultValue={chosenDevice.reading} />, device.ip, device.port, handleStatus(device)]))
                     case "sprinkler":
                         return (sprinkler.push([device.id, chosenDevice.name, device.ip, device.port, handleStatus(device)]))
