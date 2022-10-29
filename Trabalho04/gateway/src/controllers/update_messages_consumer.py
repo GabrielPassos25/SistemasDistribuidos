@@ -9,12 +9,12 @@ class UpdateMessagesConsumer:
             pika.ConnectionParameters(host='localhost'))
         self.channel = self.connection.channel()
 
-        self.channel.exchange_declare(exchange='global2', exchange_type='direct')
+        self.channel.exchange_declare(exchange='object_updates', exchange_type='topic')
 
         result = self.channel.queue_declare(queue='', exclusive=True)
         queue_name = result.method.queue
 
-        self.channel.queue_bind(exchange='global2', queue=queue_name, routing_key="light")
+        self.channel.queue_bind(exchange='object_updates', queue=queue_name, routing_key="*")
 
         self.channel.basic_consume(
             queue=queue_name, on_message_callback=self.callback, auto_ack=True)
