@@ -1,90 +1,335 @@
 import * as $protobuf from "protobufjs";
 import Long = require("long");
-/** Properties of a GatewayLookupRequest. */
-export interface IGatewayLookupRequest {
+/** Properties of a FindGatewayRequest. */
+export interface IFindGatewayRequest {
 }
 
-/** Represents a GatewayLookupRequest. */
-export class GatewayLookupRequest implements IGatewayLookupRequest {
+/** Represents a FindGatewayRequest. */
+export class FindGatewayRequest implements IFindGatewayRequest {
 
     /**
-     * Constructs a new GatewayLookupRequest.
+     * Constructs a new FindGatewayRequest.
      * @param [properties] Properties to set
      */
-    constructor(properties?: IGatewayLookupRequest);
+    constructor(properties?: IFindGatewayRequest);
 
     /**
-     * Creates a new GatewayLookupRequest instance using the specified properties.
+     * Creates a new FindGatewayRequest instance using the specified properties.
      * @param [properties] Properties to set
-     * @returns GatewayLookupRequest instance
+     * @returns FindGatewayRequest instance
      */
-    public static create(properties?: IGatewayLookupRequest): GatewayLookupRequest;
+    public static create(properties?: IFindGatewayRequest): FindGatewayRequest;
 
     /**
-     * Encodes the specified GatewayLookupRequest message. Does not implicitly {@link GatewayLookupRequest.verify|verify} messages.
-     * @param message GatewayLookupRequest message or plain object to encode
+     * Encodes the specified FindGatewayRequest message. Does not implicitly {@link FindGatewayRequest.verify|verify} messages.
+     * @param message FindGatewayRequest message or plain object to encode
      * @param [writer] Writer to encode to
      * @returns Writer
      */
-    public static encode(message: IGatewayLookupRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+    public static encode(message: IFindGatewayRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
     /**
-     * Encodes the specified GatewayLookupRequest message, length delimited. Does not implicitly {@link GatewayLookupRequest.verify|verify} messages.
-     * @param message GatewayLookupRequest message or plain object to encode
+     * Encodes the specified FindGatewayRequest message, length delimited. Does not implicitly {@link FindGatewayRequest.verify|verify} messages.
+     * @param message FindGatewayRequest message or plain object to encode
      * @param [writer] Writer to encode to
      * @returns Writer
      */
-    public static encodeDelimited(message: IGatewayLookupRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+    public static encodeDelimited(message: IFindGatewayRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
     /**
-     * Decodes a GatewayLookupRequest message from the specified reader or buffer.
+     * Decodes a FindGatewayRequest message from the specified reader or buffer.
      * @param reader Reader or buffer to decode from
      * @param [length] Message length if known beforehand
-     * @returns GatewayLookupRequest
+     * @returns FindGatewayRequest
      * @throws {Error} If the payload is not a reader or valid buffer
      * @throws {$protobuf.util.ProtocolError} If required fields are missing
      */
-    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): GatewayLookupRequest;
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): FindGatewayRequest;
 
     /**
-     * Decodes a GatewayLookupRequest message from the specified reader or buffer, length delimited.
+     * Decodes a FindGatewayRequest message from the specified reader or buffer, length delimited.
      * @param reader Reader or buffer to decode from
-     * @returns GatewayLookupRequest
+     * @returns FindGatewayRequest
      * @throws {Error} If the payload is not a reader or valid buffer
      * @throws {$protobuf.util.ProtocolError} If required fields are missing
      */
-    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): GatewayLookupRequest;
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): FindGatewayRequest;
 
     /**
-     * Verifies a GatewayLookupRequest message.
+     * Verifies a FindGatewayRequest message.
      * @param message Plain object to verify
      * @returns `null` if valid, otherwise the reason why it is not
      */
     public static verify(message: { [k: string]: any }): (string|null);
 
     /**
-     * Creates a GatewayLookupRequest message from a plain object. Also converts values to their respective internal types.
+     * Creates a FindGatewayRequest message from a plain object. Also converts values to their respective internal types.
      * @param object Plain object
-     * @returns GatewayLookupRequest
+     * @returns FindGatewayRequest
      */
-    public static fromObject(object: { [k: string]: any }): GatewayLookupRequest;
+    public static fromObject(object: { [k: string]: any }): FindGatewayRequest;
 
     /**
-     * Creates a plain object from a GatewayLookupRequest message. Also converts values to other types if specified.
-     * @param message GatewayLookupRequest
+     * Creates a plain object from a FindGatewayRequest message. Also converts values to other types if specified.
+     * @param message FindGatewayRequest
      * @param [options] Conversion options
      * @returns Plain object
      */
-    public static toObject(message: GatewayLookupRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+    public static toObject(message: FindGatewayRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
     /**
-     * Converts this GatewayLookupRequest to JSON.
+     * Converts this FindGatewayRequest to JSON.
      * @returns JSON object
      */
     public toJSON(): { [k: string]: any };
 
     /**
-     * Gets the default type url for GatewayLookupRequest
+     * Gets the default type url for FindGatewayRequest
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Properties of a FindGatewayResponse. */
+export interface IFindGatewayResponse {
+
+    /** FindGatewayResponse ip */
+    ip?: (string|null);
+
+    /** FindGatewayResponse port */
+    port?: (number|null);
+}
+
+/** Represents a FindGatewayResponse. */
+export class FindGatewayResponse implements IFindGatewayResponse {
+
+    /**
+     * Constructs a new FindGatewayResponse.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IFindGatewayResponse);
+
+    /** FindGatewayResponse ip. */
+    public ip: string;
+
+    /** FindGatewayResponse port. */
+    public port: number;
+
+    /**
+     * Creates a new FindGatewayResponse instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns FindGatewayResponse instance
+     */
+    public static create(properties?: IFindGatewayResponse): FindGatewayResponse;
+
+    /**
+     * Encodes the specified FindGatewayResponse message. Does not implicitly {@link FindGatewayResponse.verify|verify} messages.
+     * @param message FindGatewayResponse message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IFindGatewayResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified FindGatewayResponse message, length delimited. Does not implicitly {@link FindGatewayResponse.verify|verify} messages.
+     * @param message FindGatewayResponse message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IFindGatewayResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a FindGatewayResponse message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns FindGatewayResponse
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): FindGatewayResponse;
+
+    /**
+     * Decodes a FindGatewayResponse message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns FindGatewayResponse
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): FindGatewayResponse;
+
+    /**
+     * Verifies a FindGatewayResponse message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a FindGatewayResponse message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns FindGatewayResponse
+     */
+    public static fromObject(object: { [k: string]: any }): FindGatewayResponse;
+
+    /**
+     * Creates a plain object from a FindGatewayResponse message. Also converts values to other types if specified.
+     * @param message FindGatewayResponse
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: FindGatewayResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this FindGatewayResponse to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for FindGatewayResponse
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Represents a SmartObjectUpdate */
+export class SmartObjectUpdate extends $protobuf.rpc.Service {
+
+    /**
+     * Constructs a new SmartObjectUpdate service.
+     * @param rpcImpl RPC implementation
+     * @param [requestDelimited=false] Whether requests are length-delimited
+     * @param [responseDelimited=false] Whether responses are length-delimited
+     */
+    constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
+
+    /**
+     * Creates new SmartObjectUpdate service using the specified rpc implementation.
+     * @param rpcImpl RPC implementation
+     * @param [requestDelimited=false] Whether requests are length-delimited
+     * @param [responseDelimited=false] Whether responses are length-delimited
+     * @returns RPC service. Useful where requests and/or responses are streamed.
+     */
+    public static create(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean): SmartObjectUpdate;
+
+    /**
+     * Calls UpdateObject.
+     * @param request SmartObjectDetails message or plain object
+     * @param callback Node-style callback called with the error, if any, and UpdateObjectReply
+     */
+    public updateObject(request: ISmartObjectDetails, callback: SmartObjectUpdate.UpdateObjectCallback): void;
+
+    /**
+     * Calls UpdateObject.
+     * @param request SmartObjectDetails message or plain object
+     * @returns Promise
+     */
+    public updateObject(request: ISmartObjectDetails): Promise<UpdateObjectReply>;
+}
+
+export namespace SmartObjectUpdate {
+
+    /**
+     * Callback as used by {@link SmartObjectUpdate#updateObject}.
+     * @param error Error, if any
+     * @param [response] UpdateObjectReply
+     */
+    type UpdateObjectCallback = (error: (Error|null), response?: UpdateObjectReply) => void;
+}
+
+/** Properties of an UpdateObjectReply. */
+export interface IUpdateObjectReply {
+
+    /** UpdateObjectReply success */
+    success?: (boolean|null);
+}
+
+/** Represents an UpdateObjectReply. */
+export class UpdateObjectReply implements IUpdateObjectReply {
+
+    /**
+     * Constructs a new UpdateObjectReply.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: IUpdateObjectReply);
+
+    /** UpdateObjectReply success. */
+    public success: boolean;
+
+    /**
+     * Creates a new UpdateObjectReply instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns UpdateObjectReply instance
+     */
+    public static create(properties?: IUpdateObjectReply): UpdateObjectReply;
+
+    /**
+     * Encodes the specified UpdateObjectReply message. Does not implicitly {@link UpdateObjectReply.verify|verify} messages.
+     * @param message UpdateObjectReply message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: IUpdateObjectReply, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified UpdateObjectReply message, length delimited. Does not implicitly {@link UpdateObjectReply.verify|verify} messages.
+     * @param message UpdateObjectReply message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: IUpdateObjectReply, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes an UpdateObjectReply message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns UpdateObjectReply
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): UpdateObjectReply;
+
+    /**
+     * Decodes an UpdateObjectReply message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns UpdateObjectReply
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): UpdateObjectReply;
+
+    /**
+     * Verifies an UpdateObjectReply message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates an UpdateObjectReply message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns UpdateObjectReply
+     */
+    public static fromObject(object: { [k: string]: any }): UpdateObjectReply;
+
+    /**
+     * Creates a plain object from an UpdateObjectReply message. Also converts values to other types if specified.
+     * @param message UpdateObjectReply
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: UpdateObjectReply, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this UpdateObjectReply to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for UpdateObjectReply
      * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
      * @returns The default type url
      */
@@ -206,14 +451,20 @@ export interface ISmartObjectDetails {
     /** SmartObjectDetails light */
     light?: (ILightDetails|null);
 
-    /** SmartObjectDetails tv */
-    tv?: (ITvDetails|null);
+    /** SmartObjectDetails luminositySensor */
+    luminositySensor?: (ILuminositySensor|null);
 
     /** SmartObjectDetails ac */
     ac?: (IAirConditionerDetails|null);
 
     /** SmartObjectDetails tempSensor */
     tempSensor?: (ITemperatureSensorDetails|null);
+
+    /** SmartObjectDetails smokeSensor */
+    smokeSensor?: (ISmokeSensor|null);
+
+    /** SmartObjectDetails sprinkler */
+    sprinkler?: (ISprinkler|null);
 }
 
 /** Represents a SmartObjectDetails. */
@@ -240,8 +491,8 @@ export class SmartObjectDetails implements ISmartObjectDetails {
     /** SmartObjectDetails light. */
     public light?: (ILightDetails|null);
 
-    /** SmartObjectDetails tv. */
-    public tv?: (ITvDetails|null);
+    /** SmartObjectDetails luminositySensor. */
+    public luminositySensor?: (ILuminositySensor|null);
 
     /** SmartObjectDetails ac. */
     public ac?: (IAirConditionerDetails|null);
@@ -249,8 +500,14 @@ export class SmartObjectDetails implements ISmartObjectDetails {
     /** SmartObjectDetails tempSensor. */
     public tempSensor?: (ITemperatureSensorDetails|null);
 
+    /** SmartObjectDetails smokeSensor. */
+    public smokeSensor?: (ISmokeSensor|null);
+
+    /** SmartObjectDetails sprinkler. */
+    public sprinkler?: (ISprinkler|null);
+
     /** SmartObjectDetails objectDetails. */
-    public objectDetails?: ("light"|"tv"|"ac"|"tempSensor");
+    public objectDetails?: ("light"|"luminositySensor"|"ac"|"tempSensor"|"smokeSensor"|"sprinkler");
 
     /**
      * Creates a new SmartObjectDetails instance using the specified properties.
@@ -433,103 +690,303 @@ export class LightDetails implements ILightDetails {
     public static getTypeUrl(typeUrlPrefix?: string): string;
 }
 
-/** Properties of a TvDetails. */
-export interface ITvDetails {
+/** Properties of a LuminositySensor. */
+export interface ILuminositySensor {
 
-    /** TvDetails channel */
-    channel?: (string|null);
+    /** LuminositySensor name */
+    name?: (string|null);
 
-    /** TvDetails volume */
-    volume?: (number|null);
+    /** LuminositySensor reading */
+    reading?: (number|null);
 }
 
-/** Represents a TvDetails. */
-export class TvDetails implements ITvDetails {
+/** Represents a LuminositySensor. */
+export class LuminositySensor implements ILuminositySensor {
 
     /**
-     * Constructs a new TvDetails.
+     * Constructs a new LuminositySensor.
      * @param [properties] Properties to set
      */
-    constructor(properties?: ITvDetails);
+    constructor(properties?: ILuminositySensor);
 
-    /** TvDetails channel. */
-    public channel: string;
+    /** LuminositySensor name. */
+    public name: string;
 
-    /** TvDetails volume. */
-    public volume: number;
+    /** LuminositySensor reading. */
+    public reading: number;
 
     /**
-     * Creates a new TvDetails instance using the specified properties.
+     * Creates a new LuminositySensor instance using the specified properties.
      * @param [properties] Properties to set
-     * @returns TvDetails instance
+     * @returns LuminositySensor instance
      */
-    public static create(properties?: ITvDetails): TvDetails;
+    public static create(properties?: ILuminositySensor): LuminositySensor;
 
     /**
-     * Encodes the specified TvDetails message. Does not implicitly {@link TvDetails.verify|verify} messages.
-     * @param message TvDetails message or plain object to encode
+     * Encodes the specified LuminositySensor message. Does not implicitly {@link LuminositySensor.verify|verify} messages.
+     * @param message LuminositySensor message or plain object to encode
      * @param [writer] Writer to encode to
      * @returns Writer
      */
-    public static encode(message: ITvDetails, writer?: $protobuf.Writer): $protobuf.Writer;
+    public static encode(message: ILuminositySensor, writer?: $protobuf.Writer): $protobuf.Writer;
 
     /**
-     * Encodes the specified TvDetails message, length delimited. Does not implicitly {@link TvDetails.verify|verify} messages.
-     * @param message TvDetails message or plain object to encode
+     * Encodes the specified LuminositySensor message, length delimited. Does not implicitly {@link LuminositySensor.verify|verify} messages.
+     * @param message LuminositySensor message or plain object to encode
      * @param [writer] Writer to encode to
      * @returns Writer
      */
-    public static encodeDelimited(message: ITvDetails, writer?: $protobuf.Writer): $protobuf.Writer;
+    public static encodeDelimited(message: ILuminositySensor, writer?: $protobuf.Writer): $protobuf.Writer;
 
     /**
-     * Decodes a TvDetails message from the specified reader or buffer.
+     * Decodes a LuminositySensor message from the specified reader or buffer.
      * @param reader Reader or buffer to decode from
      * @param [length] Message length if known beforehand
-     * @returns TvDetails
+     * @returns LuminositySensor
      * @throws {Error} If the payload is not a reader or valid buffer
      * @throws {$protobuf.util.ProtocolError} If required fields are missing
      */
-    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): TvDetails;
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): LuminositySensor;
 
     /**
-     * Decodes a TvDetails message from the specified reader or buffer, length delimited.
+     * Decodes a LuminositySensor message from the specified reader or buffer, length delimited.
      * @param reader Reader or buffer to decode from
-     * @returns TvDetails
+     * @returns LuminositySensor
      * @throws {Error} If the payload is not a reader or valid buffer
      * @throws {$protobuf.util.ProtocolError} If required fields are missing
      */
-    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): TvDetails;
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): LuminositySensor;
 
     /**
-     * Verifies a TvDetails message.
+     * Verifies a LuminositySensor message.
      * @param message Plain object to verify
      * @returns `null` if valid, otherwise the reason why it is not
      */
     public static verify(message: { [k: string]: any }): (string|null);
 
     /**
-     * Creates a TvDetails message from a plain object. Also converts values to their respective internal types.
+     * Creates a LuminositySensor message from a plain object. Also converts values to their respective internal types.
      * @param object Plain object
-     * @returns TvDetails
+     * @returns LuminositySensor
      */
-    public static fromObject(object: { [k: string]: any }): TvDetails;
+    public static fromObject(object: { [k: string]: any }): LuminositySensor;
 
     /**
-     * Creates a plain object from a TvDetails message. Also converts values to other types if specified.
-     * @param message TvDetails
+     * Creates a plain object from a LuminositySensor message. Also converts values to other types if specified.
+     * @param message LuminositySensor
      * @param [options] Conversion options
      * @returns Plain object
      */
-    public static toObject(message: TvDetails, options?: $protobuf.IConversionOptions): { [k: string]: any };
+    public static toObject(message: LuminositySensor, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
     /**
-     * Converts this TvDetails to JSON.
+     * Converts this LuminositySensor to JSON.
      * @returns JSON object
      */
     public toJSON(): { [k: string]: any };
 
     /**
-     * Gets the default type url for TvDetails
+     * Gets the default type url for LuminositySensor
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Properties of a SmokeSensor. */
+export interface ISmokeSensor {
+
+    /** SmokeSensor name */
+    name?: (string|null);
+
+    /** SmokeSensor reading */
+    reading?: (number|null);
+}
+
+/** Represents a SmokeSensor. */
+export class SmokeSensor implements ISmokeSensor {
+
+    /**
+     * Constructs a new SmokeSensor.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: ISmokeSensor);
+
+    /** SmokeSensor name. */
+    public name: string;
+
+    /** SmokeSensor reading. */
+    public reading: number;
+
+    /**
+     * Creates a new SmokeSensor instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns SmokeSensor instance
+     */
+    public static create(properties?: ISmokeSensor): SmokeSensor;
+
+    /**
+     * Encodes the specified SmokeSensor message. Does not implicitly {@link SmokeSensor.verify|verify} messages.
+     * @param message SmokeSensor message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: ISmokeSensor, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified SmokeSensor message, length delimited. Does not implicitly {@link SmokeSensor.verify|verify} messages.
+     * @param message SmokeSensor message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: ISmokeSensor, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a SmokeSensor message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns SmokeSensor
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): SmokeSensor;
+
+    /**
+     * Decodes a SmokeSensor message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns SmokeSensor
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): SmokeSensor;
+
+    /**
+     * Verifies a SmokeSensor message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a SmokeSensor message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns SmokeSensor
+     */
+    public static fromObject(object: { [k: string]: any }): SmokeSensor;
+
+    /**
+     * Creates a plain object from a SmokeSensor message. Also converts values to other types if specified.
+     * @param message SmokeSensor
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: SmokeSensor, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this SmokeSensor to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for SmokeSensor
+     * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns The default type url
+     */
+    public static getTypeUrl(typeUrlPrefix?: string): string;
+}
+
+/** Properties of a Sprinkler. */
+export interface ISprinkler {
+
+    /** Sprinkler name */
+    name?: (string|null);
+}
+
+/** Represents a Sprinkler. */
+export class Sprinkler implements ISprinkler {
+
+    /**
+     * Constructs a new Sprinkler.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: ISprinkler);
+
+    /** Sprinkler name. */
+    public name: string;
+
+    /**
+     * Creates a new Sprinkler instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns Sprinkler instance
+     */
+    public static create(properties?: ISprinkler): Sprinkler;
+
+    /**
+     * Encodes the specified Sprinkler message. Does not implicitly {@link Sprinkler.verify|verify} messages.
+     * @param message Sprinkler message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: ISprinkler, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified Sprinkler message, length delimited. Does not implicitly {@link Sprinkler.verify|verify} messages.
+     * @param message Sprinkler message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: ISprinkler, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a Sprinkler message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns Sprinkler
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): Sprinkler;
+
+    /**
+     * Decodes a Sprinkler message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns Sprinkler
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): Sprinkler;
+
+    /**
+     * Verifies a Sprinkler message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a Sprinkler message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns Sprinkler
+     */
+    public static fromObject(object: { [k: string]: any }): Sprinkler;
+
+    /**
+     * Creates a plain object from a Sprinkler message. Also converts values to other types if specified.
+     * @param message Sprinkler
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: Sprinkler, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this Sprinkler to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
+
+    /**
+     * Gets the default type url for Sprinkler
      * @param [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
      * @returns The default type url
      */

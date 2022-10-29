@@ -6,29 +6,39 @@
 import { useEffect, useState } from 'react';
 import { Table } from '../../components/Table';
 import api from '../../services/api';
-import { ISmartObjectDetails, SmartObjectDetails, SmartObjectsList } from "../../messages/compiled";
+import { SmartObjectDetails, SmartObjectsList } from "../../messages/compiled";
 import Switch from "react-switch";
 // import ISmartObjectsList from '../../messages/compiled'
 
 // Styles
-import { Container, Title, Subtitle, StatusContainer, Status } from './styles';
+import { Container, Title, Subtitle, StatusContainer, Input, SaveButton } from './styles';
 
 // Renderer
 export default function Home() {
     const [lights, setLights] = useState([] as any);
-    const [tvs, setTvs] = useState([] as any);
+    const [luminositySensors, setLuminositySensors] = useState([] as any);
     const [airConditioners, setAirConditioners] = useState([] as any);
     const [temperatureSensors, setTemperatureSensors] = useState([] as any);
+    const [sprinkler, setSprinkler] = useState([] as any);
+    const [smokeSensors, setSmokeSensors] = useState([] as any);
     const [refresh, setRefresh] = useState<boolean>(false);
-
     const headers = [
-        ["ID", "Name", "Color", "IP", "Port", "Status"],
-        ["ID", "Channel", "Volume", "IP", "Port", "Status"],
-        ["ID", "Temperature", "Mode", "IP", "Port", "Status"],
-        ["ID", "Temperature", "IP", "Port", "Status"],
+        ["ID", "Name", "Color", "IP", "Port", "Status", "Edit"],
+        ["ID", "Name", "Reading", "IP", "Port", "Status", "Edit"],
+        ["ID", "Name", "Temperature", "IP", "Port", "Status", "Edit"],
+        ["ID", "Name", "Temperature", "IP", "Port", "Status", "Edit"],
+        ["ID", "Name", "IP", "Port", "Status", "Edit"],
+        ["ID", "Name", "Reading", "IP", "Port", "Status", "Edit"],
     ]
 
-    const devices = ["Lights", "TV's", "Air Conditioning", "Temperature Sensor"]
+    const devices = [
+        { type: "Lights", data: lights },
+        { type: "Luminosity Sensors", data: luminositySensors },
+        { type: "Air Conditioners", data: airConditioners },
+        { type: "Temperature Sensors", data: temperatureSensors },
+        { type: "Sprinkler", data: sprinkler },
+        { type: "Smoke Sensors", data: smokeSensors }
+    ]
 
     function changeStatus(device: any) {
         const message = SmartObjectDetails.create({ ...device, status: !device.status });
@@ -50,32 +60,53 @@ export default function Home() {
         );
     }
 
+    function saveChanges(device: any) {
+        const message = SmartObjectDetails.create({ ...device });
+        const encodedMessage = SmartObjectDetails.encode(message).finish();
+        api.put(`/objects/${device.id}`, encodedMessage.slice(0, encodedMessage.length), {
+            headers: {
+                'content-type': 'application/x-protobuf'
+            }
+        }).then(() => {
+            setRefresh(!refresh);
+        })
+    }
+
+
     function getData() {
         api.get('/objects', { responseType: 'arraybuffer', responseEncoding: "binary" }).then(response => {
             const objects = SmartObjectsList.decode(new Uint8Array(response.data))
-            const lightsData: any[][] = []
-            const tvsData: any[][] = []
+            const lightsData: any[][] = [];
+            const luminositySensor: any[][] = []
             const airConditionersData: any[][] = []
             const temperatureSensorsData: any[][] = []
+            const smokeSensor: any[][] = []
+            const sprinkler: any[][] = []
             objects.objects.forEach((device: any) => {
                 const whichDevice = device.objectDetails
                 const chosenDevice = device[whichDevice]
                 switch (whichDevice) {
                     case "light":
                         return (lightsData.push([device.id, chosenDevice.name, chosenDevice.color, device.ip, device.port, handleStatus(device)]))
-                    case "tv":
-                        return (tvsData.push([device.id, chosenDevice.channel, chosenDevice.volume, device.ip, device.port, handleStatus(device)]))
+                    case "luminosity_sensor":
+                        return (luminositySensor.push([device.id, chosenDevice.name, <Input defaultValue={chosenDevice.reading} />, device.ip, device.port, handleStatus(device)]))
                     case "ac":
-                        return (airConditionersData.push([device.id, chosenDevice.temperature, chosenDevice.mode, device.ip, device.port, handleStatus(device)]))
-                    case "tempSensor":
-                        return (temperatureSensorsData.push([device.id, chosenDevice.temperature, device.ip, device.port, handleStatus(device)]))
+                        return (airConditionersData.push([device.id, <Input defaultValue={chosenDevice.temperature} />, device.ip, device.port, handleStatus(device), <SaveButton>Salvar</SaveButton>]))
+                    case "temp_sensor":
+                        return (temperatureSensorsData.push([device.id, <Input defaultValue={chosenDevice.temperature} />, device.ip, device.port, handleStatus(device)]))
+                    case "smoke_sensor":
+                        return (smokeSensor.push([device.id, chosenDevice.name, <Input defaultValue={chosenDevice.reading} />, device.ip, device.port, handleStatus(device)]))
+                    case "sprinkler":
+                        return (sprinkler.push([device.id, chosenDevice.name, device.ip, device.port, handleStatus(device)]))
                 }
 
             })
             setLights(lightsData)
-            setTvs(tvsData);
+            setLuminositySensors(luminositySensor);
             setAirConditioners(airConditionersData);
             setTemperatureSensors(temperatureSensorsData);
+            setSmokeSensors(smokeSensor);
+            setSprinkler(sprinkler);
         })
     }
 
@@ -94,11 +125,11 @@ export default function Home() {
             </Title>
             {
                 devices.map((device, index) => (
-                    <div key={device}>
+                    <div key={device.type}>
                         <Subtitle>
-                            {device}
+                            {device.type}
                         </Subtitle>
-                        <Table data={index === 0 ? lights : index === 1 ? tvs : index === 2 ? airConditioners : temperatureSensors} headers={headers[index]} />
+                        <Table data={device.data} headers={headers[index]} />
                     </div>
                 ))
             }

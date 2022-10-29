@@ -7,23 +7,23 @@ const $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.
 // Exported root namespace
 const $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
 
-export const GatewayLookupRequest = $root.GatewayLookupRequest = (() => {
+export const FindGatewayRequest = $root.FindGatewayRequest = (() => {
 
     /**
-     * Properties of a GatewayLookupRequest.
-     * @exports IGatewayLookupRequest
-     * @interface IGatewayLookupRequest
+     * Properties of a FindGatewayRequest.
+     * @exports IFindGatewayRequest
+     * @interface IFindGatewayRequest
      */
 
     /**
-     * Constructs a new GatewayLookupRequest.
-     * @exports GatewayLookupRequest
-     * @classdesc Represents a GatewayLookupRequest.
-     * @implements IGatewayLookupRequest
+     * Constructs a new FindGatewayRequest.
+     * @exports FindGatewayRequest
+     * @classdesc Represents a FindGatewayRequest.
+     * @implements IFindGatewayRequest
      * @constructor
-     * @param {IGatewayLookupRequest=} [properties] Properties to set
+     * @param {IFindGatewayRequest=} [properties] Properties to set
      */
-    function GatewayLookupRequest(properties) {
+    function FindGatewayRequest(properties) {
         if (properties)
             for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                 if (properties[keys[i]] != null)
@@ -31,60 +31,60 @@ export const GatewayLookupRequest = $root.GatewayLookupRequest = (() => {
     }
 
     /**
-     * Creates a new GatewayLookupRequest instance using the specified properties.
+     * Creates a new FindGatewayRequest instance using the specified properties.
      * @function create
-     * @memberof GatewayLookupRequest
+     * @memberof FindGatewayRequest
      * @static
-     * @param {IGatewayLookupRequest=} [properties] Properties to set
-     * @returns {GatewayLookupRequest} GatewayLookupRequest instance
+     * @param {IFindGatewayRequest=} [properties] Properties to set
+     * @returns {FindGatewayRequest} FindGatewayRequest instance
      */
-    GatewayLookupRequest.create = function create(properties) {
-        return new GatewayLookupRequest(properties);
+    FindGatewayRequest.create = function create(properties) {
+        return new FindGatewayRequest(properties);
     };
 
     /**
-     * Encodes the specified GatewayLookupRequest message. Does not implicitly {@link GatewayLookupRequest.verify|verify} messages.
+     * Encodes the specified FindGatewayRequest message. Does not implicitly {@link FindGatewayRequest.verify|verify} messages.
      * @function encode
-     * @memberof GatewayLookupRequest
+     * @memberof FindGatewayRequest
      * @static
-     * @param {IGatewayLookupRequest} message GatewayLookupRequest message or plain object to encode
+     * @param {IFindGatewayRequest} message FindGatewayRequest message or plain object to encode
      * @param {$protobuf.Writer} [writer] Writer to encode to
      * @returns {$protobuf.Writer} Writer
      */
-    GatewayLookupRequest.encode = function encode(message, writer) {
+    FindGatewayRequest.encode = function encode(message, writer) {
         if (!writer)
             writer = $Writer.create();
         return writer;
     };
 
     /**
-     * Encodes the specified GatewayLookupRequest message, length delimited. Does not implicitly {@link GatewayLookupRequest.verify|verify} messages.
+     * Encodes the specified FindGatewayRequest message, length delimited. Does not implicitly {@link FindGatewayRequest.verify|verify} messages.
      * @function encodeDelimited
-     * @memberof GatewayLookupRequest
+     * @memberof FindGatewayRequest
      * @static
-     * @param {IGatewayLookupRequest} message GatewayLookupRequest message or plain object to encode
+     * @param {IFindGatewayRequest} message FindGatewayRequest message or plain object to encode
      * @param {$protobuf.Writer} [writer] Writer to encode to
      * @returns {$protobuf.Writer} Writer
      */
-    GatewayLookupRequest.encodeDelimited = function encodeDelimited(message, writer) {
+    FindGatewayRequest.encodeDelimited = function encodeDelimited(message, writer) {
         return this.encode(message, writer).ldelim();
     };
 
     /**
-     * Decodes a GatewayLookupRequest message from the specified reader or buffer.
+     * Decodes a FindGatewayRequest message from the specified reader or buffer.
      * @function decode
-     * @memberof GatewayLookupRequest
+     * @memberof FindGatewayRequest
      * @static
      * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
      * @param {number} [length] Message length if known beforehand
-     * @returns {GatewayLookupRequest} GatewayLookupRequest
+     * @returns {FindGatewayRequest} FindGatewayRequest
      * @throws {Error} If the payload is not a reader or valid buffer
      * @throws {$protobuf.util.ProtocolError} If required fields are missing
      */
-    GatewayLookupRequest.decode = function decode(reader, length) {
+    FindGatewayRequest.decode = function decode(reader, length) {
         if (!(reader instanceof $Reader))
             reader = $Reader.create(reader);
-        let end = length === undefined ? reader.len : reader.pos + length, message = new $root.GatewayLookupRequest();
+        let end = length === undefined ? reader.len : reader.pos + length, message = new $root.FindGatewayRequest();
         while (reader.pos < end) {
             let tag = reader.uint32();
             switch (tag >>> 3) {
@@ -97,89 +97,587 @@ export const GatewayLookupRequest = $root.GatewayLookupRequest = (() => {
     };
 
     /**
-     * Decodes a GatewayLookupRequest message from the specified reader or buffer, length delimited.
+     * Decodes a FindGatewayRequest message from the specified reader or buffer, length delimited.
      * @function decodeDelimited
-     * @memberof GatewayLookupRequest
+     * @memberof FindGatewayRequest
      * @static
      * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-     * @returns {GatewayLookupRequest} GatewayLookupRequest
+     * @returns {FindGatewayRequest} FindGatewayRequest
      * @throws {Error} If the payload is not a reader or valid buffer
      * @throws {$protobuf.util.ProtocolError} If required fields are missing
      */
-    GatewayLookupRequest.decodeDelimited = function decodeDelimited(reader) {
+    FindGatewayRequest.decodeDelimited = function decodeDelimited(reader) {
         if (!(reader instanceof $Reader))
             reader = new $Reader(reader);
         return this.decode(reader, reader.uint32());
     };
 
     /**
-     * Verifies a GatewayLookupRequest message.
+     * Verifies a FindGatewayRequest message.
      * @function verify
-     * @memberof GatewayLookupRequest
+     * @memberof FindGatewayRequest
      * @static
      * @param {Object.<string,*>} message Plain object to verify
      * @returns {string|null} `null` if valid, otherwise the reason why it is not
      */
-    GatewayLookupRequest.verify = function verify(message) {
+    FindGatewayRequest.verify = function verify(message) {
         if (typeof message !== "object" || message === null)
             return "object expected";
         return null;
     };
 
     /**
-     * Creates a GatewayLookupRequest message from a plain object. Also converts values to their respective internal types.
+     * Creates a FindGatewayRequest message from a plain object. Also converts values to their respective internal types.
      * @function fromObject
-     * @memberof GatewayLookupRequest
+     * @memberof FindGatewayRequest
      * @static
      * @param {Object.<string,*>} object Plain object
-     * @returns {GatewayLookupRequest} GatewayLookupRequest
+     * @returns {FindGatewayRequest} FindGatewayRequest
      */
-    GatewayLookupRequest.fromObject = function fromObject(object) {
-        if (object instanceof $root.GatewayLookupRequest)
+    FindGatewayRequest.fromObject = function fromObject(object) {
+        if (object instanceof $root.FindGatewayRequest)
             return object;
-        return new $root.GatewayLookupRequest();
+        return new $root.FindGatewayRequest();
     };
 
     /**
-     * Creates a plain object from a GatewayLookupRequest message. Also converts values to other types if specified.
+     * Creates a plain object from a FindGatewayRequest message. Also converts values to other types if specified.
      * @function toObject
-     * @memberof GatewayLookupRequest
+     * @memberof FindGatewayRequest
      * @static
-     * @param {GatewayLookupRequest} message GatewayLookupRequest
+     * @param {FindGatewayRequest} message FindGatewayRequest
      * @param {$protobuf.IConversionOptions} [options] Conversion options
      * @returns {Object.<string,*>} Plain object
      */
-    GatewayLookupRequest.toObject = function toObject() {
+    FindGatewayRequest.toObject = function toObject() {
         return {};
     };
 
     /**
-     * Converts this GatewayLookupRequest to JSON.
+     * Converts this FindGatewayRequest to JSON.
      * @function toJSON
-     * @memberof GatewayLookupRequest
+     * @memberof FindGatewayRequest
      * @instance
      * @returns {Object.<string,*>} JSON object
      */
-    GatewayLookupRequest.prototype.toJSON = function toJSON() {
+    FindGatewayRequest.prototype.toJSON = function toJSON() {
         return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
     };
 
     /**
-     * Gets the default type url for GatewayLookupRequest
+     * Gets the default type url for FindGatewayRequest
      * @function getTypeUrl
-     * @memberof GatewayLookupRequest
+     * @memberof FindGatewayRequest
      * @static
      * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
      * @returns {string} The default type url
      */
-    GatewayLookupRequest.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+    FindGatewayRequest.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
         if (typeUrlPrefix === undefined) {
             typeUrlPrefix = "type.googleapis.com";
         }
-        return typeUrlPrefix + "/GatewayLookupRequest";
+        return typeUrlPrefix + "/FindGatewayRequest";
     };
 
-    return GatewayLookupRequest;
+    return FindGatewayRequest;
+})();
+
+export const FindGatewayResponse = $root.FindGatewayResponse = (() => {
+
+    /**
+     * Properties of a FindGatewayResponse.
+     * @exports IFindGatewayResponse
+     * @interface IFindGatewayResponse
+     * @property {string|null} [ip] FindGatewayResponse ip
+     * @property {number|null} [port] FindGatewayResponse port
+     */
+
+    /**
+     * Constructs a new FindGatewayResponse.
+     * @exports FindGatewayResponse
+     * @classdesc Represents a FindGatewayResponse.
+     * @implements IFindGatewayResponse
+     * @constructor
+     * @param {IFindGatewayResponse=} [properties] Properties to set
+     */
+    function FindGatewayResponse(properties) {
+        if (properties)
+            for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                if (properties[keys[i]] != null)
+                    this[keys[i]] = properties[keys[i]];
+    }
+
+    /**
+     * FindGatewayResponse ip.
+     * @member {string} ip
+     * @memberof FindGatewayResponse
+     * @instance
+     */
+    FindGatewayResponse.prototype.ip = "";
+
+    /**
+     * FindGatewayResponse port.
+     * @member {number} port
+     * @memberof FindGatewayResponse
+     * @instance
+     */
+    FindGatewayResponse.prototype.port = 0;
+
+    /**
+     * Creates a new FindGatewayResponse instance using the specified properties.
+     * @function create
+     * @memberof FindGatewayResponse
+     * @static
+     * @param {IFindGatewayResponse=} [properties] Properties to set
+     * @returns {FindGatewayResponse} FindGatewayResponse instance
+     */
+    FindGatewayResponse.create = function create(properties) {
+        return new FindGatewayResponse(properties);
+    };
+
+    /**
+     * Encodes the specified FindGatewayResponse message. Does not implicitly {@link FindGatewayResponse.verify|verify} messages.
+     * @function encode
+     * @memberof FindGatewayResponse
+     * @static
+     * @param {IFindGatewayResponse} message FindGatewayResponse message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    FindGatewayResponse.encode = function encode(message, writer) {
+        if (!writer)
+            writer = $Writer.create();
+        if (message.ip != null && Object.hasOwnProperty.call(message, "ip"))
+            writer.uint32(/* id 1, wireType 2 =*/10).string(message.ip);
+        if (message.port != null && Object.hasOwnProperty.call(message, "port"))
+            writer.uint32(/* id 2, wireType 0 =*/16).int32(message.port);
+        return writer;
+    };
+
+    /**
+     * Encodes the specified FindGatewayResponse message, length delimited. Does not implicitly {@link FindGatewayResponse.verify|verify} messages.
+     * @function encodeDelimited
+     * @memberof FindGatewayResponse
+     * @static
+     * @param {IFindGatewayResponse} message FindGatewayResponse message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    FindGatewayResponse.encodeDelimited = function encodeDelimited(message, writer) {
+        return this.encode(message, writer).ldelim();
+    };
+
+    /**
+     * Decodes a FindGatewayResponse message from the specified reader or buffer.
+     * @function decode
+     * @memberof FindGatewayResponse
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {number} [length] Message length if known beforehand
+     * @returns {FindGatewayResponse} FindGatewayResponse
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    FindGatewayResponse.decode = function decode(reader, length) {
+        if (!(reader instanceof $Reader))
+            reader = $Reader.create(reader);
+        let end = length === undefined ? reader.len : reader.pos + length, message = new $root.FindGatewayResponse();
+        while (reader.pos < end) {
+            let tag = reader.uint32();
+            switch (tag >>> 3) {
+            case 1: {
+                    message.ip = reader.string();
+                    break;
+                }
+            case 2: {
+                    message.port = reader.int32();
+                    break;
+                }
+            default:
+                reader.skipType(tag & 7);
+                break;
+            }
+        }
+        return message;
+    };
+
+    /**
+     * Decodes a FindGatewayResponse message from the specified reader or buffer, length delimited.
+     * @function decodeDelimited
+     * @memberof FindGatewayResponse
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @returns {FindGatewayResponse} FindGatewayResponse
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    FindGatewayResponse.decodeDelimited = function decodeDelimited(reader) {
+        if (!(reader instanceof $Reader))
+            reader = new $Reader(reader);
+        return this.decode(reader, reader.uint32());
+    };
+
+    /**
+     * Verifies a FindGatewayResponse message.
+     * @function verify
+     * @memberof FindGatewayResponse
+     * @static
+     * @param {Object.<string,*>} message Plain object to verify
+     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+     */
+    FindGatewayResponse.verify = function verify(message) {
+        if (typeof message !== "object" || message === null)
+            return "object expected";
+        if (message.ip != null && message.hasOwnProperty("ip"))
+            if (!$util.isString(message.ip))
+                return "ip: string expected";
+        if (message.port != null && message.hasOwnProperty("port"))
+            if (!$util.isInteger(message.port))
+                return "port: integer expected";
+        return null;
+    };
+
+    /**
+     * Creates a FindGatewayResponse message from a plain object. Also converts values to their respective internal types.
+     * @function fromObject
+     * @memberof FindGatewayResponse
+     * @static
+     * @param {Object.<string,*>} object Plain object
+     * @returns {FindGatewayResponse} FindGatewayResponse
+     */
+    FindGatewayResponse.fromObject = function fromObject(object) {
+        if (object instanceof $root.FindGatewayResponse)
+            return object;
+        let message = new $root.FindGatewayResponse();
+        if (object.ip != null)
+            message.ip = String(object.ip);
+        if (object.port != null)
+            message.port = object.port | 0;
+        return message;
+    };
+
+    /**
+     * Creates a plain object from a FindGatewayResponse message. Also converts values to other types if specified.
+     * @function toObject
+     * @memberof FindGatewayResponse
+     * @static
+     * @param {FindGatewayResponse} message FindGatewayResponse
+     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @returns {Object.<string,*>} Plain object
+     */
+    FindGatewayResponse.toObject = function toObject(message, options) {
+        if (!options)
+            options = {};
+        let object = {};
+        if (options.defaults) {
+            object.ip = "";
+            object.port = 0;
+        }
+        if (message.ip != null && message.hasOwnProperty("ip"))
+            object.ip = message.ip;
+        if (message.port != null && message.hasOwnProperty("port"))
+            object.port = message.port;
+        return object;
+    };
+
+    /**
+     * Converts this FindGatewayResponse to JSON.
+     * @function toJSON
+     * @memberof FindGatewayResponse
+     * @instance
+     * @returns {Object.<string,*>} JSON object
+     */
+    FindGatewayResponse.prototype.toJSON = function toJSON() {
+        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+    };
+
+    /**
+     * Gets the default type url for FindGatewayResponse
+     * @function getTypeUrl
+     * @memberof FindGatewayResponse
+     * @static
+     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns {string} The default type url
+     */
+    FindGatewayResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        if (typeUrlPrefix === undefined) {
+            typeUrlPrefix = "type.googleapis.com";
+        }
+        return typeUrlPrefix + "/FindGatewayResponse";
+    };
+
+    return FindGatewayResponse;
+})();
+
+export const SmartObjectUpdate = $root.SmartObjectUpdate = (() => {
+
+    /**
+     * Constructs a new SmartObjectUpdate service.
+     * @exports SmartObjectUpdate
+     * @classdesc Represents a SmartObjectUpdate
+     * @extends $protobuf.rpc.Service
+     * @constructor
+     * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
+     * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
+     * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
+     */
+    function SmartObjectUpdate(rpcImpl, requestDelimited, responseDelimited) {
+        $protobuf.rpc.Service.call(this, rpcImpl, requestDelimited, responseDelimited);
+    }
+
+    (SmartObjectUpdate.prototype = Object.create($protobuf.rpc.Service.prototype)).constructor = SmartObjectUpdate;
+
+    /**
+     * Creates new SmartObjectUpdate service using the specified rpc implementation.
+     * @function create
+     * @memberof SmartObjectUpdate
+     * @static
+     * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
+     * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
+     * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
+     * @returns {SmartObjectUpdate} RPC service. Useful where requests and/or responses are streamed.
+     */
+    SmartObjectUpdate.create = function create(rpcImpl, requestDelimited, responseDelimited) {
+        return new this(rpcImpl, requestDelimited, responseDelimited);
+    };
+
+    /**
+     * Callback as used by {@link SmartObjectUpdate#updateObject}.
+     * @memberof SmartObjectUpdate
+     * @typedef UpdateObjectCallback
+     * @type {function}
+     * @param {Error|null} error Error, if any
+     * @param {UpdateObjectReply} [response] UpdateObjectReply
+     */
+
+    /**
+     * Calls UpdateObject.
+     * @function updateObject
+     * @memberof SmartObjectUpdate
+     * @instance
+     * @param {ISmartObjectDetails} request SmartObjectDetails message or plain object
+     * @param {SmartObjectUpdate.UpdateObjectCallback} callback Node-style callback called with the error, if any, and UpdateObjectReply
+     * @returns {undefined}
+     * @variation 1
+     */
+    Object.defineProperty(SmartObjectUpdate.prototype.updateObject = function updateObject(request, callback) {
+        return this.rpcCall(updateObject, $root.SmartObjectDetails, $root.UpdateObjectReply, request, callback);
+    }, "name", { value: "UpdateObject" });
+
+    /**
+     * Calls UpdateObject.
+     * @function updateObject
+     * @memberof SmartObjectUpdate
+     * @instance
+     * @param {ISmartObjectDetails} request SmartObjectDetails message or plain object
+     * @returns {Promise<UpdateObjectReply>} Promise
+     * @variation 2
+     */
+
+    return SmartObjectUpdate;
+})();
+
+export const UpdateObjectReply = $root.UpdateObjectReply = (() => {
+
+    /**
+     * Properties of an UpdateObjectReply.
+     * @exports IUpdateObjectReply
+     * @interface IUpdateObjectReply
+     * @property {boolean|null} [success] UpdateObjectReply success
+     */
+
+    /**
+     * Constructs a new UpdateObjectReply.
+     * @exports UpdateObjectReply
+     * @classdesc Represents an UpdateObjectReply.
+     * @implements IUpdateObjectReply
+     * @constructor
+     * @param {IUpdateObjectReply=} [properties] Properties to set
+     */
+    function UpdateObjectReply(properties) {
+        if (properties)
+            for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                if (properties[keys[i]] != null)
+                    this[keys[i]] = properties[keys[i]];
+    }
+
+    /**
+     * UpdateObjectReply success.
+     * @member {boolean} success
+     * @memberof UpdateObjectReply
+     * @instance
+     */
+    UpdateObjectReply.prototype.success = false;
+
+    /**
+     * Creates a new UpdateObjectReply instance using the specified properties.
+     * @function create
+     * @memberof UpdateObjectReply
+     * @static
+     * @param {IUpdateObjectReply=} [properties] Properties to set
+     * @returns {UpdateObjectReply} UpdateObjectReply instance
+     */
+    UpdateObjectReply.create = function create(properties) {
+        return new UpdateObjectReply(properties);
+    };
+
+    /**
+     * Encodes the specified UpdateObjectReply message. Does not implicitly {@link UpdateObjectReply.verify|verify} messages.
+     * @function encode
+     * @memberof UpdateObjectReply
+     * @static
+     * @param {IUpdateObjectReply} message UpdateObjectReply message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    UpdateObjectReply.encode = function encode(message, writer) {
+        if (!writer)
+            writer = $Writer.create();
+        if (message.success != null && Object.hasOwnProperty.call(message, "success"))
+            writer.uint32(/* id 1, wireType 0 =*/8).bool(message.success);
+        return writer;
+    };
+
+    /**
+     * Encodes the specified UpdateObjectReply message, length delimited. Does not implicitly {@link UpdateObjectReply.verify|verify} messages.
+     * @function encodeDelimited
+     * @memberof UpdateObjectReply
+     * @static
+     * @param {IUpdateObjectReply} message UpdateObjectReply message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    UpdateObjectReply.encodeDelimited = function encodeDelimited(message, writer) {
+        return this.encode(message, writer).ldelim();
+    };
+
+    /**
+     * Decodes an UpdateObjectReply message from the specified reader or buffer.
+     * @function decode
+     * @memberof UpdateObjectReply
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {number} [length] Message length if known beforehand
+     * @returns {UpdateObjectReply} UpdateObjectReply
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    UpdateObjectReply.decode = function decode(reader, length) {
+        if (!(reader instanceof $Reader))
+            reader = $Reader.create(reader);
+        let end = length === undefined ? reader.len : reader.pos + length, message = new $root.UpdateObjectReply();
+        while (reader.pos < end) {
+            let tag = reader.uint32();
+            switch (tag >>> 3) {
+            case 1: {
+                    message.success = reader.bool();
+                    break;
+                }
+            default:
+                reader.skipType(tag & 7);
+                break;
+            }
+        }
+        return message;
+    };
+
+    /**
+     * Decodes an UpdateObjectReply message from the specified reader or buffer, length delimited.
+     * @function decodeDelimited
+     * @memberof UpdateObjectReply
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @returns {UpdateObjectReply} UpdateObjectReply
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    UpdateObjectReply.decodeDelimited = function decodeDelimited(reader) {
+        if (!(reader instanceof $Reader))
+            reader = new $Reader(reader);
+        return this.decode(reader, reader.uint32());
+    };
+
+    /**
+     * Verifies an UpdateObjectReply message.
+     * @function verify
+     * @memberof UpdateObjectReply
+     * @static
+     * @param {Object.<string,*>} message Plain object to verify
+     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+     */
+    UpdateObjectReply.verify = function verify(message) {
+        if (typeof message !== "object" || message === null)
+            return "object expected";
+        if (message.success != null && message.hasOwnProperty("success"))
+            if (typeof message.success !== "boolean")
+                return "success: boolean expected";
+        return null;
+    };
+
+    /**
+     * Creates an UpdateObjectReply message from a plain object. Also converts values to their respective internal types.
+     * @function fromObject
+     * @memberof UpdateObjectReply
+     * @static
+     * @param {Object.<string,*>} object Plain object
+     * @returns {UpdateObjectReply} UpdateObjectReply
+     */
+    UpdateObjectReply.fromObject = function fromObject(object) {
+        if (object instanceof $root.UpdateObjectReply)
+            return object;
+        let message = new $root.UpdateObjectReply();
+        if (object.success != null)
+            message.success = Boolean(object.success);
+        return message;
+    };
+
+    /**
+     * Creates a plain object from an UpdateObjectReply message. Also converts values to other types if specified.
+     * @function toObject
+     * @memberof UpdateObjectReply
+     * @static
+     * @param {UpdateObjectReply} message UpdateObjectReply
+     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @returns {Object.<string,*>} Plain object
+     */
+    UpdateObjectReply.toObject = function toObject(message, options) {
+        if (!options)
+            options = {};
+        let object = {};
+        if (options.defaults)
+            object.success = false;
+        if (message.success != null && message.hasOwnProperty("success"))
+            object.success = message.success;
+        return object;
+    };
+
+    /**
+     * Converts this UpdateObjectReply to JSON.
+     * @function toJSON
+     * @memberof UpdateObjectReply
+     * @instance
+     * @returns {Object.<string,*>} JSON object
+     */
+    UpdateObjectReply.prototype.toJSON = function toJSON() {
+        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+    };
+
+    /**
+     * Gets the default type url for UpdateObjectReply
+     * @function getTypeUrl
+     * @memberof UpdateObjectReply
+     * @static
+     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns {string} The default type url
+     */
+    UpdateObjectReply.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        if (typeUrlPrefix === undefined) {
+            typeUrlPrefix = "type.googleapis.com";
+        }
+        return typeUrlPrefix + "/UpdateObjectReply";
+    };
+
+    return UpdateObjectReply;
 })();
 
 export const SmartObjectsList = $root.SmartObjectsList = (() => {
@@ -417,9 +915,11 @@ export const SmartObjectDetails = $root.SmartObjectDetails = (() => {
      * @property {number|null} [port] SmartObjectDetails port
      * @property {string|null} [id] SmartObjectDetails id
      * @property {ILightDetails|null} [light] SmartObjectDetails light
-     * @property {ITvDetails|null} [tv] SmartObjectDetails tv
+     * @property {ILuminositySensor|null} [luminositySensor] SmartObjectDetails luminositySensor
      * @property {IAirConditionerDetails|null} [ac] SmartObjectDetails ac
      * @property {ITemperatureSensorDetails|null} [tempSensor] SmartObjectDetails tempSensor
+     * @property {ISmokeSensor|null} [smokeSensor] SmartObjectDetails smokeSensor
+     * @property {ISprinkler|null} [sprinkler] SmartObjectDetails sprinkler
      */
 
     /**
@@ -478,12 +978,12 @@ export const SmartObjectDetails = $root.SmartObjectDetails = (() => {
     SmartObjectDetails.prototype.light = null;
 
     /**
-     * SmartObjectDetails tv.
-     * @member {ITvDetails|null|undefined} tv
+     * SmartObjectDetails luminositySensor.
+     * @member {ILuminositySensor|null|undefined} luminositySensor
      * @memberof SmartObjectDetails
      * @instance
      */
-    SmartObjectDetails.prototype.tv = null;
+    SmartObjectDetails.prototype.luminositySensor = null;
 
     /**
      * SmartObjectDetails ac.
@@ -501,17 +1001,33 @@ export const SmartObjectDetails = $root.SmartObjectDetails = (() => {
      */
     SmartObjectDetails.prototype.tempSensor = null;
 
+    /**
+     * SmartObjectDetails smokeSensor.
+     * @member {ISmokeSensor|null|undefined} smokeSensor
+     * @memberof SmartObjectDetails
+     * @instance
+     */
+    SmartObjectDetails.prototype.smokeSensor = null;
+
+    /**
+     * SmartObjectDetails sprinkler.
+     * @member {ISprinkler|null|undefined} sprinkler
+     * @memberof SmartObjectDetails
+     * @instance
+     */
+    SmartObjectDetails.prototype.sprinkler = null;
+
     // OneOf field names bound to virtual getters and setters
     let $oneOfFields;
 
     /**
      * SmartObjectDetails objectDetails.
-     * @member {"light"|"tv"|"ac"|"tempSensor"|undefined} objectDetails
+     * @member {"light"|"luminositySensor"|"ac"|"tempSensor"|"smokeSensor"|"sprinkler"|undefined} objectDetails
      * @memberof SmartObjectDetails
      * @instance
      */
     Object.defineProperty(SmartObjectDetails.prototype, "objectDetails", {
-        get: $util.oneOfGetter($oneOfFields = ["light", "tv", "ac", "tempSensor"]),
+        get: $util.oneOfGetter($oneOfFields = ["light", "luminositySensor", "ac", "tempSensor", "smokeSensor", "sprinkler"]),
         set: $util.oneOfSetter($oneOfFields)
     });
 
@@ -547,14 +1063,18 @@ export const SmartObjectDetails = $root.SmartObjectDetails = (() => {
             writer.uint32(/* id 3, wireType 0 =*/24).int32(message.port);
         if (message.light != null && Object.hasOwnProperty.call(message, "light"))
             $root.LightDetails.encode(message.light, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
-        if (message.tv != null && Object.hasOwnProperty.call(message, "tv"))
-            $root.TvDetails.encode(message.tv, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
+        if (message.luminositySensor != null && Object.hasOwnProperty.call(message, "luminositySensor"))
+            $root.LuminositySensor.encode(message.luminositySensor, writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
         if (message.ac != null && Object.hasOwnProperty.call(message, "ac"))
             $root.AirConditionerDetails.encode(message.ac, writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
         if (message.tempSensor != null && Object.hasOwnProperty.call(message, "tempSensor"))
             $root.TemperatureSensorDetails.encode(message.tempSensor, writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
         if (message.id != null && Object.hasOwnProperty.call(message, "id"))
             writer.uint32(/* id 8, wireType 2 =*/66).string(message.id);
+        if (message.sprinkler != null && Object.hasOwnProperty.call(message, "sprinkler"))
+            $root.Sprinkler.encode(message.sprinkler, writer.uint32(/* id 9, wireType 2 =*/74).fork()).ldelim();
+        if (message.smokeSensor != null && Object.hasOwnProperty.call(message, "smokeSensor"))
+            $root.SmokeSensor.encode(message.smokeSensor, writer.uint32(/* id 10, wireType 2 =*/82).fork()).ldelim();
         return writer;
     };
 
@@ -610,7 +1130,7 @@ export const SmartObjectDetails = $root.SmartObjectDetails = (() => {
                     break;
                 }
             case 5: {
-                    message.tv = $root.TvDetails.decode(reader, reader.uint32());
+                    message.luminositySensor = $root.LuminositySensor.decode(reader, reader.uint32());
                     break;
                 }
             case 6: {
@@ -619,6 +1139,14 @@ export const SmartObjectDetails = $root.SmartObjectDetails = (() => {
                 }
             case 7: {
                     message.tempSensor = $root.TemperatureSensorDetails.decode(reader, reader.uint32());
+                    break;
+                }
+            case 10: {
+                    message.smokeSensor = $root.SmokeSensor.decode(reader, reader.uint32());
+                    break;
+                }
+            case 9: {
+                    message.sprinkler = $root.Sprinkler.decode(reader, reader.uint32());
                     break;
                 }
             default:
@@ -677,14 +1205,14 @@ export const SmartObjectDetails = $root.SmartObjectDetails = (() => {
                     return "light." + error;
             }
         }
-        if (message.tv != null && message.hasOwnProperty("tv")) {
+        if (message.luminositySensor != null && message.hasOwnProperty("luminositySensor")) {
             if (properties.objectDetails === 1)
                 return "objectDetails: multiple values";
             properties.objectDetails = 1;
             {
-                let error = $root.TvDetails.verify(message.tv);
+                let error = $root.LuminositySensor.verify(message.luminositySensor);
                 if (error)
-                    return "tv." + error;
+                    return "luminositySensor." + error;
             }
         }
         if (message.ac != null && message.hasOwnProperty("ac")) {
@@ -705,6 +1233,26 @@ export const SmartObjectDetails = $root.SmartObjectDetails = (() => {
                 let error = $root.TemperatureSensorDetails.verify(message.tempSensor);
                 if (error)
                     return "tempSensor." + error;
+            }
+        }
+        if (message.smokeSensor != null && message.hasOwnProperty("smokeSensor")) {
+            if (properties.objectDetails === 1)
+                return "objectDetails: multiple values";
+            properties.objectDetails = 1;
+            {
+                let error = $root.SmokeSensor.verify(message.smokeSensor);
+                if (error)
+                    return "smokeSensor." + error;
+            }
+        }
+        if (message.sprinkler != null && message.hasOwnProperty("sprinkler")) {
+            if (properties.objectDetails === 1)
+                return "objectDetails: multiple values";
+            properties.objectDetails = 1;
+            {
+                let error = $root.Sprinkler.verify(message.sprinkler);
+                if (error)
+                    return "sprinkler." + error;
             }
         }
         return null;
@@ -735,10 +1283,10 @@ export const SmartObjectDetails = $root.SmartObjectDetails = (() => {
                 throw TypeError(".SmartObjectDetails.light: object expected");
             message.light = $root.LightDetails.fromObject(object.light);
         }
-        if (object.tv != null) {
-            if (typeof object.tv !== "object")
-                throw TypeError(".SmartObjectDetails.tv: object expected");
-            message.tv = $root.TvDetails.fromObject(object.tv);
+        if (object.luminositySensor != null) {
+            if (typeof object.luminositySensor !== "object")
+                throw TypeError(".SmartObjectDetails.luminositySensor: object expected");
+            message.luminositySensor = $root.LuminositySensor.fromObject(object.luminositySensor);
         }
         if (object.ac != null) {
             if (typeof object.ac !== "object")
@@ -749,6 +1297,16 @@ export const SmartObjectDetails = $root.SmartObjectDetails = (() => {
             if (typeof object.tempSensor !== "object")
                 throw TypeError(".SmartObjectDetails.tempSensor: object expected");
             message.tempSensor = $root.TemperatureSensorDetails.fromObject(object.tempSensor);
+        }
+        if (object.smokeSensor != null) {
+            if (typeof object.smokeSensor !== "object")
+                throw TypeError(".SmartObjectDetails.smokeSensor: object expected");
+            message.smokeSensor = $root.SmokeSensor.fromObject(object.smokeSensor);
+        }
+        if (object.sprinkler != null) {
+            if (typeof object.sprinkler !== "object")
+                throw TypeError(".SmartObjectDetails.sprinkler: object expected");
+            message.sprinkler = $root.Sprinkler.fromObject(object.sprinkler);
         }
         return message;
     };
@@ -783,10 +1341,10 @@ export const SmartObjectDetails = $root.SmartObjectDetails = (() => {
             if (options.oneofs)
                 object.objectDetails = "light";
         }
-        if (message.tv != null && message.hasOwnProperty("tv")) {
-            object.tv = $root.TvDetails.toObject(message.tv, options);
+        if (message.luminositySensor != null && message.hasOwnProperty("luminositySensor")) {
+            object.luminositySensor = $root.LuminositySensor.toObject(message.luminositySensor, options);
             if (options.oneofs)
-                object.objectDetails = "tv";
+                object.objectDetails = "luminositySensor";
         }
         if (message.ac != null && message.hasOwnProperty("ac")) {
             object.ac = $root.AirConditionerDetails.toObject(message.ac, options);
@@ -800,6 +1358,16 @@ export const SmartObjectDetails = $root.SmartObjectDetails = (() => {
         }
         if (message.id != null && message.hasOwnProperty("id"))
             object.id = message.id;
+        if (message.sprinkler != null && message.hasOwnProperty("sprinkler")) {
+            object.sprinkler = $root.Sprinkler.toObject(message.sprinkler, options);
+            if (options.oneofs)
+                object.objectDetails = "sprinkler";
+        }
+        if (message.smokeSensor != null && message.hasOwnProperty("smokeSensor")) {
+            object.smokeSensor = $root.SmokeSensor.toObject(message.smokeSensor, options);
+            if (options.oneofs)
+                object.objectDetails = "smokeSensor";
+        }
         return object;
     };
 
@@ -1059,25 +1627,25 @@ export const LightDetails = $root.LightDetails = (() => {
     return LightDetails;
 })();
 
-export const TvDetails = $root.TvDetails = (() => {
+export const LuminositySensor = $root.LuminositySensor = (() => {
 
     /**
-     * Properties of a TvDetails.
-     * @exports ITvDetails
-     * @interface ITvDetails
-     * @property {string|null} [channel] TvDetails channel
-     * @property {number|null} [volume] TvDetails volume
+     * Properties of a LuminositySensor.
+     * @exports ILuminositySensor
+     * @interface ILuminositySensor
+     * @property {string|null} [name] LuminositySensor name
+     * @property {number|null} [reading] LuminositySensor reading
      */
 
     /**
-     * Constructs a new TvDetails.
-     * @exports TvDetails
-     * @classdesc Represents a TvDetails.
-     * @implements ITvDetails
+     * Constructs a new LuminositySensor.
+     * @exports LuminositySensor
+     * @classdesc Represents a LuminositySensor.
+     * @implements ILuminositySensor
      * @constructor
-     * @param {ITvDetails=} [properties] Properties to set
+     * @param {ILuminositySensor=} [properties] Properties to set
      */
-    function TvDetails(properties) {
+    function LuminositySensor(properties) {
         if (properties)
             for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                 if (properties[keys[i]] != null)
@@ -1085,89 +1653,89 @@ export const TvDetails = $root.TvDetails = (() => {
     }
 
     /**
-     * TvDetails channel.
-     * @member {string} channel
-     * @memberof TvDetails
+     * LuminositySensor name.
+     * @member {string} name
+     * @memberof LuminositySensor
      * @instance
      */
-    TvDetails.prototype.channel = "";
+    LuminositySensor.prototype.name = "";
 
     /**
-     * TvDetails volume.
-     * @member {number} volume
-     * @memberof TvDetails
+     * LuminositySensor reading.
+     * @member {number} reading
+     * @memberof LuminositySensor
      * @instance
      */
-    TvDetails.prototype.volume = 0;
+    LuminositySensor.prototype.reading = 0;
 
     /**
-     * Creates a new TvDetails instance using the specified properties.
+     * Creates a new LuminositySensor instance using the specified properties.
      * @function create
-     * @memberof TvDetails
+     * @memberof LuminositySensor
      * @static
-     * @param {ITvDetails=} [properties] Properties to set
-     * @returns {TvDetails} TvDetails instance
+     * @param {ILuminositySensor=} [properties] Properties to set
+     * @returns {LuminositySensor} LuminositySensor instance
      */
-    TvDetails.create = function create(properties) {
-        return new TvDetails(properties);
+    LuminositySensor.create = function create(properties) {
+        return new LuminositySensor(properties);
     };
 
     /**
-     * Encodes the specified TvDetails message. Does not implicitly {@link TvDetails.verify|verify} messages.
+     * Encodes the specified LuminositySensor message. Does not implicitly {@link LuminositySensor.verify|verify} messages.
      * @function encode
-     * @memberof TvDetails
+     * @memberof LuminositySensor
      * @static
-     * @param {ITvDetails} message TvDetails message or plain object to encode
+     * @param {ILuminositySensor} message LuminositySensor message or plain object to encode
      * @param {$protobuf.Writer} [writer] Writer to encode to
      * @returns {$protobuf.Writer} Writer
      */
-    TvDetails.encode = function encode(message, writer) {
+    LuminositySensor.encode = function encode(message, writer) {
         if (!writer)
             writer = $Writer.create();
-        if (message.channel != null && Object.hasOwnProperty.call(message, "channel"))
-            writer.uint32(/* id 1, wireType 2 =*/10).string(message.channel);
-        if (message.volume != null && Object.hasOwnProperty.call(message, "volume"))
-            writer.uint32(/* id 2, wireType 0 =*/16).int32(message.volume);
+        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+        if (message.reading != null && Object.hasOwnProperty.call(message, "reading"))
+            writer.uint32(/* id 2, wireType 5 =*/21).float(message.reading);
         return writer;
     };
 
     /**
-     * Encodes the specified TvDetails message, length delimited. Does not implicitly {@link TvDetails.verify|verify} messages.
+     * Encodes the specified LuminositySensor message, length delimited. Does not implicitly {@link LuminositySensor.verify|verify} messages.
      * @function encodeDelimited
-     * @memberof TvDetails
+     * @memberof LuminositySensor
      * @static
-     * @param {ITvDetails} message TvDetails message or plain object to encode
+     * @param {ILuminositySensor} message LuminositySensor message or plain object to encode
      * @param {$protobuf.Writer} [writer] Writer to encode to
      * @returns {$protobuf.Writer} Writer
      */
-    TvDetails.encodeDelimited = function encodeDelimited(message, writer) {
+    LuminositySensor.encodeDelimited = function encodeDelimited(message, writer) {
         return this.encode(message, writer).ldelim();
     };
 
     /**
-     * Decodes a TvDetails message from the specified reader or buffer.
+     * Decodes a LuminositySensor message from the specified reader or buffer.
      * @function decode
-     * @memberof TvDetails
+     * @memberof LuminositySensor
      * @static
      * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
      * @param {number} [length] Message length if known beforehand
-     * @returns {TvDetails} TvDetails
+     * @returns {LuminositySensor} LuminositySensor
      * @throws {Error} If the payload is not a reader or valid buffer
      * @throws {$protobuf.util.ProtocolError} If required fields are missing
      */
-    TvDetails.decode = function decode(reader, length) {
+    LuminositySensor.decode = function decode(reader, length) {
         if (!(reader instanceof $Reader))
             reader = $Reader.create(reader);
-        let end = length === undefined ? reader.len : reader.pos + length, message = new $root.TvDetails();
+        let end = length === undefined ? reader.len : reader.pos + length, message = new $root.LuminositySensor();
         while (reader.pos < end) {
             let tag = reader.uint32();
             switch (tag >>> 3) {
             case 1: {
-                    message.channel = reader.string();
+                    message.name = reader.string();
                     break;
                 }
             case 2: {
-                    message.volume = reader.int32();
+                    message.reading = reader.float();
                     break;
                 }
             default:
@@ -1179,111 +1747,541 @@ export const TvDetails = $root.TvDetails = (() => {
     };
 
     /**
-     * Decodes a TvDetails message from the specified reader or buffer, length delimited.
+     * Decodes a LuminositySensor message from the specified reader or buffer, length delimited.
      * @function decodeDelimited
-     * @memberof TvDetails
+     * @memberof LuminositySensor
      * @static
      * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-     * @returns {TvDetails} TvDetails
+     * @returns {LuminositySensor} LuminositySensor
      * @throws {Error} If the payload is not a reader or valid buffer
      * @throws {$protobuf.util.ProtocolError} If required fields are missing
      */
-    TvDetails.decodeDelimited = function decodeDelimited(reader) {
+    LuminositySensor.decodeDelimited = function decodeDelimited(reader) {
         if (!(reader instanceof $Reader))
             reader = new $Reader(reader);
         return this.decode(reader, reader.uint32());
     };
 
     /**
-     * Verifies a TvDetails message.
+     * Verifies a LuminositySensor message.
      * @function verify
-     * @memberof TvDetails
+     * @memberof LuminositySensor
      * @static
      * @param {Object.<string,*>} message Plain object to verify
      * @returns {string|null} `null` if valid, otherwise the reason why it is not
      */
-    TvDetails.verify = function verify(message) {
+    LuminositySensor.verify = function verify(message) {
         if (typeof message !== "object" || message === null)
             return "object expected";
-        if (message.channel != null && message.hasOwnProperty("channel"))
-            if (!$util.isString(message.channel))
-                return "channel: string expected";
-        if (message.volume != null && message.hasOwnProperty("volume"))
-            if (!$util.isInteger(message.volume))
-                return "volume: integer expected";
+        if (message.name != null && message.hasOwnProperty("name"))
+            if (!$util.isString(message.name))
+                return "name: string expected";
+        if (message.reading != null && message.hasOwnProperty("reading"))
+            if (typeof message.reading !== "number")
+                return "reading: number expected";
         return null;
     };
 
     /**
-     * Creates a TvDetails message from a plain object. Also converts values to their respective internal types.
+     * Creates a LuminositySensor message from a plain object. Also converts values to their respective internal types.
      * @function fromObject
-     * @memberof TvDetails
+     * @memberof LuminositySensor
      * @static
      * @param {Object.<string,*>} object Plain object
-     * @returns {TvDetails} TvDetails
+     * @returns {LuminositySensor} LuminositySensor
      */
-    TvDetails.fromObject = function fromObject(object) {
-        if (object instanceof $root.TvDetails)
+    LuminositySensor.fromObject = function fromObject(object) {
+        if (object instanceof $root.LuminositySensor)
             return object;
-        let message = new $root.TvDetails();
-        if (object.channel != null)
-            message.channel = String(object.channel);
-        if (object.volume != null)
-            message.volume = object.volume | 0;
+        let message = new $root.LuminositySensor();
+        if (object.name != null)
+            message.name = String(object.name);
+        if (object.reading != null)
+            message.reading = Number(object.reading);
         return message;
     };
 
     /**
-     * Creates a plain object from a TvDetails message. Also converts values to other types if specified.
+     * Creates a plain object from a LuminositySensor message. Also converts values to other types if specified.
      * @function toObject
-     * @memberof TvDetails
+     * @memberof LuminositySensor
      * @static
-     * @param {TvDetails} message TvDetails
+     * @param {LuminositySensor} message LuminositySensor
      * @param {$protobuf.IConversionOptions} [options] Conversion options
      * @returns {Object.<string,*>} Plain object
      */
-    TvDetails.toObject = function toObject(message, options) {
+    LuminositySensor.toObject = function toObject(message, options) {
         if (!options)
             options = {};
         let object = {};
         if (options.defaults) {
-            object.channel = "";
-            object.volume = 0;
+            object.name = "";
+            object.reading = 0;
         }
-        if (message.channel != null && message.hasOwnProperty("channel"))
-            object.channel = message.channel;
-        if (message.volume != null && message.hasOwnProperty("volume"))
-            object.volume = message.volume;
+        if (message.name != null && message.hasOwnProperty("name"))
+            object.name = message.name;
+        if (message.reading != null && message.hasOwnProperty("reading"))
+            object.reading = options.json && !isFinite(message.reading) ? String(message.reading) : message.reading;
         return object;
     };
 
     /**
-     * Converts this TvDetails to JSON.
+     * Converts this LuminositySensor to JSON.
      * @function toJSON
-     * @memberof TvDetails
+     * @memberof LuminositySensor
      * @instance
      * @returns {Object.<string,*>} JSON object
      */
-    TvDetails.prototype.toJSON = function toJSON() {
+    LuminositySensor.prototype.toJSON = function toJSON() {
         return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
     };
 
     /**
-     * Gets the default type url for TvDetails
+     * Gets the default type url for LuminositySensor
      * @function getTypeUrl
-     * @memberof TvDetails
+     * @memberof LuminositySensor
      * @static
      * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
      * @returns {string} The default type url
      */
-    TvDetails.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+    LuminositySensor.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
         if (typeUrlPrefix === undefined) {
             typeUrlPrefix = "type.googleapis.com";
         }
-        return typeUrlPrefix + "/TvDetails";
+        return typeUrlPrefix + "/LuminositySensor";
     };
 
-    return TvDetails;
+    return LuminositySensor;
+})();
+
+export const SmokeSensor = $root.SmokeSensor = (() => {
+
+    /**
+     * Properties of a SmokeSensor.
+     * @exports ISmokeSensor
+     * @interface ISmokeSensor
+     * @property {string|null} [name] SmokeSensor name
+     * @property {number|null} [reading] SmokeSensor reading
+     */
+
+    /**
+     * Constructs a new SmokeSensor.
+     * @exports SmokeSensor
+     * @classdesc Represents a SmokeSensor.
+     * @implements ISmokeSensor
+     * @constructor
+     * @param {ISmokeSensor=} [properties] Properties to set
+     */
+    function SmokeSensor(properties) {
+        if (properties)
+            for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                if (properties[keys[i]] != null)
+                    this[keys[i]] = properties[keys[i]];
+    }
+
+    /**
+     * SmokeSensor name.
+     * @member {string} name
+     * @memberof SmokeSensor
+     * @instance
+     */
+    SmokeSensor.prototype.name = "";
+
+    /**
+     * SmokeSensor reading.
+     * @member {number} reading
+     * @memberof SmokeSensor
+     * @instance
+     */
+    SmokeSensor.prototype.reading = 0;
+
+    /**
+     * Creates a new SmokeSensor instance using the specified properties.
+     * @function create
+     * @memberof SmokeSensor
+     * @static
+     * @param {ISmokeSensor=} [properties] Properties to set
+     * @returns {SmokeSensor} SmokeSensor instance
+     */
+    SmokeSensor.create = function create(properties) {
+        return new SmokeSensor(properties);
+    };
+
+    /**
+     * Encodes the specified SmokeSensor message. Does not implicitly {@link SmokeSensor.verify|verify} messages.
+     * @function encode
+     * @memberof SmokeSensor
+     * @static
+     * @param {ISmokeSensor} message SmokeSensor message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    SmokeSensor.encode = function encode(message, writer) {
+        if (!writer)
+            writer = $Writer.create();
+        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+        if (message.reading != null && Object.hasOwnProperty.call(message, "reading"))
+            writer.uint32(/* id 2, wireType 5 =*/21).float(message.reading);
+        return writer;
+    };
+
+    /**
+     * Encodes the specified SmokeSensor message, length delimited. Does not implicitly {@link SmokeSensor.verify|verify} messages.
+     * @function encodeDelimited
+     * @memberof SmokeSensor
+     * @static
+     * @param {ISmokeSensor} message SmokeSensor message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    SmokeSensor.encodeDelimited = function encodeDelimited(message, writer) {
+        return this.encode(message, writer).ldelim();
+    };
+
+    /**
+     * Decodes a SmokeSensor message from the specified reader or buffer.
+     * @function decode
+     * @memberof SmokeSensor
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {number} [length] Message length if known beforehand
+     * @returns {SmokeSensor} SmokeSensor
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    SmokeSensor.decode = function decode(reader, length) {
+        if (!(reader instanceof $Reader))
+            reader = $Reader.create(reader);
+        let end = length === undefined ? reader.len : reader.pos + length, message = new $root.SmokeSensor();
+        while (reader.pos < end) {
+            let tag = reader.uint32();
+            switch (tag >>> 3) {
+            case 1: {
+                    message.name = reader.string();
+                    break;
+                }
+            case 2: {
+                    message.reading = reader.float();
+                    break;
+                }
+            default:
+                reader.skipType(tag & 7);
+                break;
+            }
+        }
+        return message;
+    };
+
+    /**
+     * Decodes a SmokeSensor message from the specified reader or buffer, length delimited.
+     * @function decodeDelimited
+     * @memberof SmokeSensor
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @returns {SmokeSensor} SmokeSensor
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    SmokeSensor.decodeDelimited = function decodeDelimited(reader) {
+        if (!(reader instanceof $Reader))
+            reader = new $Reader(reader);
+        return this.decode(reader, reader.uint32());
+    };
+
+    /**
+     * Verifies a SmokeSensor message.
+     * @function verify
+     * @memberof SmokeSensor
+     * @static
+     * @param {Object.<string,*>} message Plain object to verify
+     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+     */
+    SmokeSensor.verify = function verify(message) {
+        if (typeof message !== "object" || message === null)
+            return "object expected";
+        if (message.name != null && message.hasOwnProperty("name"))
+            if (!$util.isString(message.name))
+                return "name: string expected";
+        if (message.reading != null && message.hasOwnProperty("reading"))
+            if (typeof message.reading !== "number")
+                return "reading: number expected";
+        return null;
+    };
+
+    /**
+     * Creates a SmokeSensor message from a plain object. Also converts values to their respective internal types.
+     * @function fromObject
+     * @memberof SmokeSensor
+     * @static
+     * @param {Object.<string,*>} object Plain object
+     * @returns {SmokeSensor} SmokeSensor
+     */
+    SmokeSensor.fromObject = function fromObject(object) {
+        if (object instanceof $root.SmokeSensor)
+            return object;
+        let message = new $root.SmokeSensor();
+        if (object.name != null)
+            message.name = String(object.name);
+        if (object.reading != null)
+            message.reading = Number(object.reading);
+        return message;
+    };
+
+    /**
+     * Creates a plain object from a SmokeSensor message. Also converts values to other types if specified.
+     * @function toObject
+     * @memberof SmokeSensor
+     * @static
+     * @param {SmokeSensor} message SmokeSensor
+     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @returns {Object.<string,*>} Plain object
+     */
+    SmokeSensor.toObject = function toObject(message, options) {
+        if (!options)
+            options = {};
+        let object = {};
+        if (options.defaults) {
+            object.name = "";
+            object.reading = 0;
+        }
+        if (message.name != null && message.hasOwnProperty("name"))
+            object.name = message.name;
+        if (message.reading != null && message.hasOwnProperty("reading"))
+            object.reading = options.json && !isFinite(message.reading) ? String(message.reading) : message.reading;
+        return object;
+    };
+
+    /**
+     * Converts this SmokeSensor to JSON.
+     * @function toJSON
+     * @memberof SmokeSensor
+     * @instance
+     * @returns {Object.<string,*>} JSON object
+     */
+    SmokeSensor.prototype.toJSON = function toJSON() {
+        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+    };
+
+    /**
+     * Gets the default type url for SmokeSensor
+     * @function getTypeUrl
+     * @memberof SmokeSensor
+     * @static
+     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns {string} The default type url
+     */
+    SmokeSensor.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        if (typeUrlPrefix === undefined) {
+            typeUrlPrefix = "type.googleapis.com";
+        }
+        return typeUrlPrefix + "/SmokeSensor";
+    };
+
+    return SmokeSensor;
+})();
+
+export const Sprinkler = $root.Sprinkler = (() => {
+
+    /**
+     * Properties of a Sprinkler.
+     * @exports ISprinkler
+     * @interface ISprinkler
+     * @property {string|null} [name] Sprinkler name
+     */
+
+    /**
+     * Constructs a new Sprinkler.
+     * @exports Sprinkler
+     * @classdesc Represents a Sprinkler.
+     * @implements ISprinkler
+     * @constructor
+     * @param {ISprinkler=} [properties] Properties to set
+     */
+    function Sprinkler(properties) {
+        if (properties)
+            for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                if (properties[keys[i]] != null)
+                    this[keys[i]] = properties[keys[i]];
+    }
+
+    /**
+     * Sprinkler name.
+     * @member {string} name
+     * @memberof Sprinkler
+     * @instance
+     */
+    Sprinkler.prototype.name = "";
+
+    /**
+     * Creates a new Sprinkler instance using the specified properties.
+     * @function create
+     * @memberof Sprinkler
+     * @static
+     * @param {ISprinkler=} [properties] Properties to set
+     * @returns {Sprinkler} Sprinkler instance
+     */
+    Sprinkler.create = function create(properties) {
+        return new Sprinkler(properties);
+    };
+
+    /**
+     * Encodes the specified Sprinkler message. Does not implicitly {@link Sprinkler.verify|verify} messages.
+     * @function encode
+     * @memberof Sprinkler
+     * @static
+     * @param {ISprinkler} message Sprinkler message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    Sprinkler.encode = function encode(message, writer) {
+        if (!writer)
+            writer = $Writer.create();
+        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+            writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
+        return writer;
+    };
+
+    /**
+     * Encodes the specified Sprinkler message, length delimited. Does not implicitly {@link Sprinkler.verify|verify} messages.
+     * @function encodeDelimited
+     * @memberof Sprinkler
+     * @static
+     * @param {ISprinkler} message Sprinkler message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    Sprinkler.encodeDelimited = function encodeDelimited(message, writer) {
+        return this.encode(message, writer).ldelim();
+    };
+
+    /**
+     * Decodes a Sprinkler message from the specified reader or buffer.
+     * @function decode
+     * @memberof Sprinkler
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {number} [length] Message length if known beforehand
+     * @returns {Sprinkler} Sprinkler
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    Sprinkler.decode = function decode(reader, length) {
+        if (!(reader instanceof $Reader))
+            reader = $Reader.create(reader);
+        let end = length === undefined ? reader.len : reader.pos + length, message = new $root.Sprinkler();
+        while (reader.pos < end) {
+            let tag = reader.uint32();
+            switch (tag >>> 3) {
+            case 1: {
+                    message.name = reader.string();
+                    break;
+                }
+            default:
+                reader.skipType(tag & 7);
+                break;
+            }
+        }
+        return message;
+    };
+
+    /**
+     * Decodes a Sprinkler message from the specified reader or buffer, length delimited.
+     * @function decodeDelimited
+     * @memberof Sprinkler
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @returns {Sprinkler} Sprinkler
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    Sprinkler.decodeDelimited = function decodeDelimited(reader) {
+        if (!(reader instanceof $Reader))
+            reader = new $Reader(reader);
+        return this.decode(reader, reader.uint32());
+    };
+
+    /**
+     * Verifies a Sprinkler message.
+     * @function verify
+     * @memberof Sprinkler
+     * @static
+     * @param {Object.<string,*>} message Plain object to verify
+     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+     */
+    Sprinkler.verify = function verify(message) {
+        if (typeof message !== "object" || message === null)
+            return "object expected";
+        if (message.name != null && message.hasOwnProperty("name"))
+            if (!$util.isString(message.name))
+                return "name: string expected";
+        return null;
+    };
+
+    /**
+     * Creates a Sprinkler message from a plain object. Also converts values to their respective internal types.
+     * @function fromObject
+     * @memberof Sprinkler
+     * @static
+     * @param {Object.<string,*>} object Plain object
+     * @returns {Sprinkler} Sprinkler
+     */
+    Sprinkler.fromObject = function fromObject(object) {
+        if (object instanceof $root.Sprinkler)
+            return object;
+        let message = new $root.Sprinkler();
+        if (object.name != null)
+            message.name = String(object.name);
+        return message;
+    };
+
+    /**
+     * Creates a plain object from a Sprinkler message. Also converts values to other types if specified.
+     * @function toObject
+     * @memberof Sprinkler
+     * @static
+     * @param {Sprinkler} message Sprinkler
+     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @returns {Object.<string,*>} Plain object
+     */
+    Sprinkler.toObject = function toObject(message, options) {
+        if (!options)
+            options = {};
+        let object = {};
+        if (options.defaults)
+            object.name = "";
+        if (message.name != null && message.hasOwnProperty("name"))
+            object.name = message.name;
+        return object;
+    };
+
+    /**
+     * Converts this Sprinkler to JSON.
+     * @function toJSON
+     * @memberof Sprinkler
+     * @instance
+     * @returns {Object.<string,*>} JSON object
+     */
+    Sprinkler.prototype.toJSON = function toJSON() {
+        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+    };
+
+    /**
+     * Gets the default type url for Sprinkler
+     * @function getTypeUrl
+     * @memberof Sprinkler
+     * @static
+     * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+     * @returns {string} The default type url
+     */
+    Sprinkler.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+        if (typeUrlPrefix === undefined) {
+            typeUrlPrefix = "type.googleapis.com";
+        }
+        return typeUrlPrefix + "/Sprinkler";
+    };
+
+    return Sprinkler;
 })();
 
 /**
