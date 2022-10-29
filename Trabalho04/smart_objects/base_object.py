@@ -69,11 +69,11 @@ class BaseObject:
 
         Thread(target=self.update_gateway_loop, name="Update gateway loop").start()
 
-        server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-        SmartObjectDetails_pb2_grpc.add_SmartObjectUpdateServicer_to_server(ObjectGRPCServer(self), server)
-        server.add_insecure_port(f'0.0.0.0:{self.port}')
-        server.start()
-        # server.wait_for_termination()
+        self.grpc_server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+        SmartObjectDetails_pb2_grpc.add_SmartObjectUpdateServicer_to_server(ObjectGRPCServer(self), self.grpc_server)
+        self.grpc_server.add_insecure_port(f'0.0.0.0:{self.port}')
+        self.grpc_server.start()
+        # self.grpc_server.wait_for_termination()
 
     '''Allows an object watch for events in another object, this allow some kind of interaction between events
     happening on other objects;'''

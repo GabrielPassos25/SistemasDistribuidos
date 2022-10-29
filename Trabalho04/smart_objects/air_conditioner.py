@@ -1,4 +1,4 @@
-from base_object import BaseObject
+from base_object import BaseObject, ObjectTypes
 
 from SmartObjectDetails_pb2 import AirConditionerDetails, AirConditionerMode, SmartObjectDetails
 
@@ -6,6 +6,7 @@ from SmartObjectDetails_pb2 import AirConditionerDetails, AirConditionerMode, Sm
 class AirConditioner(BaseObject):
 
     def __init__(self, temperature, mode):
+        self.object_type = ObjectTypes.AIR_CONDITIONER
         self.temperature = temperature
         self.mode = mode
         super().__init__()
