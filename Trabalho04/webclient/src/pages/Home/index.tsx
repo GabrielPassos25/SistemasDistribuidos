@@ -32,12 +32,12 @@ export default function Home() {
         ["ID", "Name", "Reading", "IP", "Port", "Status", "Edit"],
     ]
     const devices = [
-        { type: "Lights", data: lights },
-        { type: "Luminosity Sensors", data: luminositySensors },
+        // { type: "Lights", data: lights },
+        // { type: "Luminosity Sensors", data: luminositySensors },
         { type: "Air Conditioners", data: airConditioners },
-        { type: "Temperature Sensors", data: temperatureSensors },
-        { type: "Sprinkler", data: sprinkler },
-        { type: "Smoke Sensors", data: smokeSensors }
+        // { type: "Temperature Sensors", data: temperatureSensors },
+        // { type: "Sprinkler", data: sprinkler },
+        // { type: "Smoke Sensors", data: smokeSensors }
     ]
     function changeStatus(device: any) {
         const message = SmartObjectDetails.create({ ...device, status: !device.status });
@@ -60,10 +60,15 @@ export default function Home() {
     }
 
     function editField(key: string, value: any) {
-        setEditingDevice({ ...editingDevice, [key]: value });
+        setEditingDevice({ ...editingDevice, ac: {...editingDevice.ac, [key]: value }});
+        // console.log(editingDevice)
+        // console.log({ ...editingDevice, ac: {...editingDevice.ac, [key]: value }})
+        // setEditingDevice({ ...editingDevice, ac: {...editingDevice.ac, [key]: value }});
+        // console.log(editingDevice)
     }
 
-    function saveChanges(device: any) {
+    function saveChanges() {
+        const device = editingDevice;
         const message = SmartObjectDetails.create({ ...device });
         const encodedMessage = SmartObjectDetails.encode(message).finish();
         api.put(`/objects/${device.id}`, encodedMessage.slice(0, encodedMessage.length), {
@@ -75,12 +80,35 @@ export default function Home() {
         })
     }
 
+    function acMap(device: any) {
+        return [
+            device.id,
+            device.id != editingDevice.id ?
+                device.temperature :
+                <Input defaultValue={device.temperature} onChange={e => editField("temperature", e.target.value)} />,
+            device.ip,
+            device.port,
+            handleStatus(device),
+            <Button onClick={editingDevice.id === device.id ? () => saveChanges() : () => {
+                if (device.id !== editingDevice.id && editingDevice.id !== undefined) {
+                    alert("Finalize a edição do outro dispositivo antes de editar outro")
+                    return;
+                }
+                setRefresh(!refresh);
+                setEditingDevice(device.originalObject);
+            }}>
+                {editingDevice.id === device.id ? "Save" : "Edit"}
+            </Button>
+        ]
+
+    }
+
     function getData() {
         api.get('/objects', { responseType: 'arraybuffer', responseEncoding: "binary" }).then(response => {
             const objects = SmartObjectsList.decode(new Uint8Array(response.data))
             const lightsData: any[][] = [];
             const luminositySensor: any[][] = []
-            const airConditionersData: any[][] = []
+            const airConditionersData: any[] = []
             const temperatureSensorsData: any[][] = []
             const smokeSensor: any[][] = []
             const sprinkler: any[][] = []
@@ -89,32 +117,24 @@ export default function Home() {
                 const chosenDevice = device[whichDevice]
                 switch (whichDevice) {
                     case "light":
-                        return (lightsData.push([device.id, chosenDevice.name, chosenDevice.color, device.ip, device.port, handleStatus(device)]))
+                        return (lightsData.push([device.id, chosenDevice.name, chosenDevice.color, device.ip, device.port, device.status]))
                     case "luminositySensor":
-                        return (luminositySensor.push([device.id, chosenDevice.name, <Input defaultValue={chosenDevice.reading} />, device.ip, device.port, handleStatus(device)]))
+                        return (luminositySensor.push([device.id, chosenDevice.name, chosenDevice.reading, device.ip, device.port, device.status]))
                     case "ac":
-                        return (airConditionersData.push([
-                            device.id,
-                            <Input defaultValue={chosenDevice.temperature} onChange={e => editField("name", e.target.value)} />,
-                            device.ip,
-                            device.port,
-                            handleStatus(device),
-                            <Button onClick={editingDevice.id === device.id ? () => saveChanges(editingDevice) : () => {
-                                if (device.id !== editingDevice.id && editingDevice.id !== undefined) {
-                                    alert("Finalize a edição do outro dispositivo antes de editar outro")
-                                    return;
-                                }
-                                setRefresh(!refresh); setEditingDevice(device);
-                            }}>
-                                {editingDevice.id === device.id ? "Save" : "Edit"}
-                            </Button>
-                        ]))
+                        return (airConditionersData.push({
+                            id: device.id,
+                            temperature: chosenDevice.temperature,
+                            ip: device.ip,
+                            port: device.port,
+                            status: device.status,
+                            originalObject: device
+                        }))
                     case "tempSensor":
-                        return (temperatureSensorsData.push([device.id, <Input defaultValue={chosenDevice.temperature} />, device.ip, device.port, handleStatus(device)]))
+                        return (temperatureSensorsData.push([device.id, chosenDevice.temperature, device.ip, device.port, device.status]))
                     case "smokeSensor":
-                        return (smokeSensor.push([device.id, chosenDevice.name, <Input defaultValue={chosenDevice.reading} />, device.ip, device.port, handleStatus(device)]))
+                        return (smokeSensor.push([device.id, chosenDevice.name, chosenDevice.reading, device.ip, device.port, device.status]))
                     case "sprinkler":
-                        return (sprinkler.push([device.id, chosenDevice.name, device.ip, device.port, handleStatus(device)]))
+                        return (sprinkler.push([device.id, chosenDevice.name, device.ip, device.port, device.status]))
                 }
 
             })
@@ -145,7 +165,7 @@ export default function Home() {
                         <Subtitle>
                             {device.type}
                         </Subtitle>
-                        <Table data={device.data} headers={headers[index]} />
+                        <Table data={device.data.map(acMap)} headers={headers[index]} />
                     </div>
                 ))
             }
