@@ -31,7 +31,7 @@ export const Input = styled.input`
     outline: none;
 `;
 
-export const SaveButton = styled.button`
+export const Button = styled.button`
     padding: 10px;
     border: 1px solid var(--neutral-color-high-main);
     border-radius: 5px;
