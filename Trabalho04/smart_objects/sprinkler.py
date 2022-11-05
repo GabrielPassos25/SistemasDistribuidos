@@ -17,6 +17,7 @@ class Sprinkler(BaseObject):
         self.watch_smart_object_events(connection=self.rabbit_mq_consumer_connection,
                                        callback=self.smoke_sensor_change_callback,
                                        object_type=ObjectTypes.SMOKE_SENSOR)
+        self.grpc_server.wait_for_termination()
 
     def smoke_sensor_change_callback(self, ch, method, properties, body):
         object_details = SmartObjectDetails()

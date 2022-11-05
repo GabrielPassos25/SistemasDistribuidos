@@ -15,7 +15,7 @@ import SmartObjectDetails_pb2_grpc
 from object_grpc_server import ObjectGRPCServer
 import pika
 
-REFRESH_INTERVAL = 10
+REFRESH_INTERVAL = 5
 
 # sensor de temperatura e ar condicionado
 

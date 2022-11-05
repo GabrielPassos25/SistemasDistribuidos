@@ -20,6 +20,7 @@ class TemperatureSensor(BaseObject):
         self.watch_smart_object_events(connection=self.rabbit_mq_consumer_connection,
                                        callback=self.ac_temperature_callback,
                                        object_type=ObjectTypes.AIR_CONDITIONER)
+        self.grpc_server.wait_for_termination()
 
     def ac_temperature_callback(self, ch, method, properties, body):
         object_details = SmartObjectDetails()
@@ -52,6 +53,7 @@ class TemperatureSensor(BaseObject):
 
     def update_internal_state(self, object_details: SmartObjectDetails):
         self.status = object_details.status
+        self.temperature = object_details.temp_sensor.temperature
 
 
 TemperatureSensor(44)

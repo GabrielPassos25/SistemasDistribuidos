@@ -7,5 +7,7 @@ class ObjectGRPCServer(SmartObjectUpdateServicer):
         self.base_object = base_object
 
     def UpdateObject(self, request, context):
+        print("Updating object internal state..")
+        print(request)
         self.base_object.update_internal_state(request)
         return UpdateObjectReply(success = True)

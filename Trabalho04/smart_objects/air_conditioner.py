@@ -10,6 +10,7 @@ class AirConditioner(BaseObject):
         self.temperature = temperature
         self.mode = mode
         super().__init__()
+        self.grpc_server.wait_for_termination()
 
 
     def to_proto(self):

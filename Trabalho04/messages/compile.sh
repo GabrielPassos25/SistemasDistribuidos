@@ -1,6 +1,8 @@
 #!/bin/sh
 
-protoc -I=. --python_out=. *.proto
+source ../venv/bin/activate
+
+python3 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. *.proto
 
 cp *.py ../smart_objects
 cp *.py ../gateway/src/server
