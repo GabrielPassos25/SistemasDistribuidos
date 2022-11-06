@@ -88,7 +88,7 @@ export default function Home() {
             }),
             device.ip,
             device.port,
-            handleStatus(device),
+            handleStatus(device.originalObject),
             <Button onClick={editingDevice.id === device.id ? () => saveChanges() : () => {
                 if (device.id !== editingDevice.id && editingDevice.id !== undefined) {
                     alert("Finalize a edição do outro dispositivo antes de editar outro")

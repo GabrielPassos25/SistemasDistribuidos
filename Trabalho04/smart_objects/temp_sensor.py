@@ -34,7 +34,7 @@ class TemperatureSensor(BaseObject):
 
     def update_temperature(self):
         while True:
-            sleep(15)
+            sleep(5)
 
             if self.is_ac_on:
                 # temperature reading must converge to ac temperature

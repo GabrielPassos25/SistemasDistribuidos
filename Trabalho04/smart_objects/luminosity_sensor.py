@@ -2,9 +2,12 @@ from base_object import BaseObject, ObjectTypes
 from random import randint
 from time import sleep
 from threading import Thread
+from utils import get_random_pseudo_oscillation
 
 from SmartObjectDetails_pb2 import TemperatureSensorDetails, SmartObjectDetails, \
     LuminositySensor as LuminositySensorProto
+
+OSCILATION_RANGE = 5
 
 
 class LuminositySensor(BaseObject):
@@ -22,14 +25,13 @@ class LuminositySensor(BaseObject):
         while True:
             sleep(5)
             print("Updating luminance")
-            self.luminance = min(randint(self.luminance - 4, randint(self.luminance, self.luminance + 4)), 100)
+            self.luminance = get_random_pseudo_oscillation(self.luminance, interval=OSCILATION_RANGE)
 
     def to_proto(self):
         sensor = LuminositySensorProto(reading = self.luminance, name=self.name)
         return SmartObjectDetails(status=self.status, ip=self.ip, port=self.port, luminosity_sensor=sensor, id=self.id)
 
     def update_internal_state(self, object_details: SmartObjectDetails):
-        print("aqui?")
         self.status = object_details.status
         self.name = object_details.luminosity_sensor.name
         self.luminance = object_details.luminosity_sensor.reading

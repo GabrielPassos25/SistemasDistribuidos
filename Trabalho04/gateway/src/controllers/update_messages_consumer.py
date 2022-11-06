@@ -22,9 +22,9 @@ class UpdateMessagesConsumer:
         self.channel.start_consuming()
 
     def callback(self, ch, method, properties, body):
-        print("Got update message")
+        # print("Got update message")
         object_details = SmartObjectDetails()
         object_details.ParseFromString(body)
-        print(object_details)
+        # print(object_details)
         self.update_objects_function(object_details)
 

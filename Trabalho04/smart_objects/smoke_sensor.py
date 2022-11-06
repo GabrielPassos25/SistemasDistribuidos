@@ -2,10 +2,12 @@ from base_object import BaseObject, ObjectTypes
 from random import randint
 from time import sleep
 from threading import Thread
+from utils import get_random_pseudo_oscillation
 
 from SmartObjectDetails_pb2 import SmartObjectDetails, \
     SmokeSensor as SmokeSensorProto
 
+OSCILATION_RANGE = 5
 
 class SmokeSensor(BaseObject):
 
@@ -22,7 +24,7 @@ class SmokeSensor(BaseObject):
         while True:
             sleep(5)
             print("Updating smoke readings")
-            self.reading = min(randint(self.reading - 8, randint(self.reading, self.reading + 8)), 100)
+            self.reading = get_random_pseudo_oscillation(self.reading, interval=OSCILATION_RANGE)
 
     def to_proto(self):
         sensor = SmokeSensorProto(name=self.name, reading = self.reading)
